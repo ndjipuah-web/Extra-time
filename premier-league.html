@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Premier League • Football • Extra-Time NamibiaSports</title>
+    <meta name="description" content="Latest Premier League news, fixtures, results and standings" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <svg style="display:none;">
+        <symbol id="icon-football" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+            <path d="M12 2 L15 8 L9 8 Z M12 22 L15 16 L9 16 Z" fill="currentColor" />
+        </symbol>
+    </svg>
+
+    <nav class="global-nav">
+        <div class="nav-left">
+            <button class="mobile-menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="index.html" class="logo-tile">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420">
+                    <defs>
+                        <radialGradient id="sphereGrad" cx="35%" cy="30%" r="95%">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+                            <stop offset="45%" stop-color="#2b2b2b" stop-opacity="0.22" />
+                            <stop offset="100%" stop-color="#0e0e0e" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="210" cy="180" r="155" fill="url(#sphereGrad)" stroke="#d62828" stroke-width="7" />
+                    <text x="210" y="170" font-size="54" fill="#d62828" text-anchor="middle"
+                        font-family="Arial Black">Extra</text>
+                    <text x="210" y="240" font-size="54" fill="#ffffff" text-anchor="middle"
+                        font-family="Arial Black">Time</text>
+                </svg>
+            </a>
+            <div class="brand-block">
+                <div class="brand-title">NamibiaSports</div>
+                <div class="tagline">A home for Namibian sports</div>
+            </div>
+            <nav class="sports-inline-nav">
+                <ul class="sports-inline-list">
+                    <li class="active dropdown">
+                        <a href="#">
+                            <svg aria-hidden="true">
+                                <use href="#icon-football"></use>
+                            </svg> Football
+                        </a>
+                        <div class="mega-menu">
+                            <a href="premier-league.html">Premier League</a>
+                            <a href="namibia-premier.html">Namibia Premier</a>
+                            <a href="caf-competitions.html">CAF Competitions</a>
+                            <a href="international-football.html">International</a>
+                            <a href="transfers.html">Transfers</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeToggle"><i class="fas fa-adjust"></i><span>Theme</span></button>
+        </div>
+    </nav>
+
+    <div class="app">
+        <aside class="sidebar-left" id="siteLeftNav">
+            <div class="logo-compact"><i class="fas fa-futbol"></i> NamibiaSports</div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="premier-league.html" class="nav-item active"><i class="fas fa-trophy"></i> Premier League</a>
+                <a href="namibia-premier.html" class="nav-item"><i class="fas fa-flag"></i> Namibia Premier</a>
+                <a href="caf-competitions.html" class="nav-item"><i class="fas fa-globe-africa"></i> CAF
+                    Competitions</a>
+                <a href="international-football.html" class="nav-item"><i class="fas fa-globe"></i> International</a>
+                <a href="transfers.html" class="nav-item"><i class="fas fa-exchange-alt"></i> Transfers</a>
+            </nav>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="top-stories.html" class="nav-item"><i class="fas fa-newspaper"></i> Top Stories</a>
+                <!-- other links -->
+            </nav>
+        </aside>
+
+        <section class="main">
+            <header class="main-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search Premier League...">
+                </div>
+            </header>
+
+            <section class="hero-banner">
+                <div style="flex:1">
+                    <div class="hero-label">Football • Premier League</div>
+                    <h1 class="hero-title">English Premier League</h1>
+                    <p class="hero-excerpt">Latest news, fixtures, results and standings from the English Premier
+                        League.</p>
+                </div>
+                <div style="width:320px">
+                    <img src="https://via.placeholder.com/320x180/333333/ff7b00?text=Premier+League"
+                        alt="Premier League" style="border-radius:10px">
+                </div>
+            </section>
+
+            <div class="content-container">
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">Latest News</h2>
+                    <div class="breaking-news-grid">
+                        <article class="breaking-news-card">
+                            <div class="news-tag football">Breaking</div>
+                            <h3>Haaland Scores Hat-trick</h3>
+                            <p class="muted">Manchester City striker continues incredible scoring form.</p>
+                            <div class="muted small">2 hours ago</div>
+                        </article>
+                        <article class="breaking-news-card">
+                            <div class="news-tag football">Team News</div>
+                            <h3>Arteta Signs New Contract</h3>
+                            <p class="muted">Arsenal manager extends stay until 2027.</p>
+                            <div class="muted small">5 hours ago</div>
+                        </article>
+                    </div>
+                </section>
+
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">League Table</h2>
+                    <div class="card">
+                        <div style="overflow-x:auto;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Pos</th>
+                                        <th>Team</th>
+                                        <th style="text-align:center">P</th>
+                                        <th style="text-align:center">Pts</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><strong>Arsenal</strong></td>
+                                        <td style="text-align:center">15</td>
+                                        <td style="text-align:center">36</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Manchester City</td>
+                                        <td style="text-align:center">15</td>
+                                        <td style="text-align:center">34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Liverpool</td>
+                                        <td style="text-align:center">15</td>
+                                        <td style="text-align:center">32</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <aside class="sidebar-right">
+            <section>
+                <h3 class="widget-title"><i class="fas fa-fire"></i> Top Stories</h3>
+                <ul class="headlines-list">
+                    <li class="headline-item"><a class="headline-link" href="#">Klopp Press Conference</a><span>1 hour
+                            ago</span></li>
+                    <li class="headline-item"><a class="headline-link" href="#">New Signing Debut</a><span>3 hours
+                            ago</span></li>
+                </ul>
+            </section>
+        </aside>
+    </div>
+
+    <footer class="site-footer">© Extra-Time / NamibiaSports 2025</footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

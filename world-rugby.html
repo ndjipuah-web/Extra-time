@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>World Rugby • Rugby • Extra-Time NamibiaSports</title>
+    <meta name="description" content="Latest world rugby news, international tournaments, and global rugby coverage" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .competition-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        .rankings-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .rankings-table th {
+            background: rgba(255, 123, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <svg style="display:none;">
+        <symbol id="icon-rugby" viewBox="0 0 24 24">
+            <ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" stroke-width="2" fill="none" />
+        </symbol>
+    </svg>
+
+    <nav class="global-nav">
+        <div class="nav-left">
+            <button class="mobile-menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <a href="index.html" class="logo-tile">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420">
+                    <defs>
+                        <radialGradient id="sphereGrad" cx="35%" cy="30%" r="95%">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+                            <stop offset="45%" stop-color="#2b2b2b" stop-opacity="0.22" />
+                            <stop offset="100%" stop-color="#0e0e0e" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="210" cy="180" r="155" fill="url(#sphereGrad)" stroke="#d62828" stroke-width="7" />
+                    <text x="210" y="170" font-size="54" fill="#d62828" text-anchor="middle"
+                        font-family="Arial Black">Extra</text>
+                    <text x="210" y="240" font-size="54" fill="#ffffff" text-anchor="middle"
+                        font-family="Arial Black">Time</text>
+                </svg>
+            </a>
+            <div class="brand-block">
+                <div class="brand-title">NamibiaSports</div>
+                <div class="tagline">A home for Namibian sports</div>
+            </div>
+            <nav class="sports-inline-nav">
+                <ul class="sports-inline-list">
+                    <li class="dropdown">
+                        <a href="#"><svg aria-hidden="true">
+                                <use href="#icon-rugby"></use>
+                            </svg> Rugby</a>
+                        <div class="mega-menu">
+                            <a href="world-rugby.html">World Rugby</a>
+                            <a href="welwitschias.html">Welwitschias</a>
+                            <a href="rugby-7s.html">Rugby 7s</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeToggle"><i class="fas fa-adjust"></i><span>Theme</span></button>
+        </div>
+    </nav>
+
+    <div class="app">
+        <aside class="sidebar-left" id="siteLeftNav">
+            <div class="logo-compact"><i class="fas fa-football-ball"></i> NamibiaSports</div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="world-rugby.html" class="nav-item active"><i class="fas fa-globe"></i> World Rugby</a>
+                <a href="welwitschias.html" class="nav-item"><i class="fas fa-flag"></i> Welwitschias</a>
+                <a href="rugby-7s.html" class="nav-item"><i class="fas fa-running"></i> Rugby 7s</a>
+            </nav>
+        </aside>
+
+        <section class="main">
+            <header class="main-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search world rugby...">
+                </div>
+            </header>
+
+            <section class="hero-banner">
+                <div style="flex:1">
+                    <div class="hero-label">Rugby • International</div>
+                    <h1 class="hero-title">World Rugby</h1>
+                    <p class="hero-excerpt">Latest news from international rugby unions, World Rugby tournaments, and
+                        global rugby developments.</p>
+                </div>
+                <div style="width:320px">
+                    <img src="https://via.placeholder.com/320x180/333333/ff7b00?text=World+Rugby" alt="World Rugby"
+                        style="border-radius:10px">
+                </div>
+            </section>
+
+            <div class="content-container">
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">World Rankings</h2>
+                    <div class="competition-card">
+                        <table class="rankings-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Team</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Ireland</td>
+                                    <td>92.29</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>South Africa</td>
+                                    <td>91.78</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>New Zealand</td>
+                                    <td>89.23</td>
+                                </tr>
+                                <tr>
+                                    <td>24</td>
+                                    <td><strong>Namibia</strong></td>
+                                    <td>61.61</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">International Tournaments</h2>
+                    <div class="breaking-news-grid">
+                        <article class="breaking-news-card">
+                            <div class="news-tag rugby">Rugby Championship</div>
+                            <h3>Springboks Dominate Tournament</h3>
+                            <p class="muted">South Africa wins Rugby Championship with perfect record.</p>
+                        </article>
+                        <article class="breaking-news-card">
+                            <div class="news-tag rugby">Six Nations</div>
+                            <h3>Ireland Completes Grand Slam</h3>
+                            <p class="muted">Irish team wins Six Nations with impressive performances.</p>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <aside class="sidebar-right">
+            <section>
+                <h3 class="widget-title"><i class="fas fa-trophy"></i> World Cups</h3>
+                <ul class="headlines-list">
+                    <li class="headline-item"><a class="headline-link" href="#">2023: South Africa Champions</a></li>
+                    <li class="headline-item"><a class="headline-link" href="#">2027: Australia Host</a></li>
+                </ul>
+            </section>
+        </aside>
+    </div>
+
+    <footer class="site-footer">© Extra-Time / NamibiaSports 2025</footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

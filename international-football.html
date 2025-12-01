@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>International Football • Football • Extra-Time NamibiaSports</title>
+    <meta name="description"
+        content="World football coverage including World Cup, continental championships and international friendlies" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- SVG ICONS -->
+    <svg style="display:none;" aria-hidden="true" focusable="false">
+        <symbol id="icon-football" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+            <path d="M12 2 L15 8 L9 8 Z M12 22 L15 16 L9 16 Z" fill="currentColor" />
+        </symbol>
+    </svg>
+
+    <!-- TOP NAV -->
+    <nav class="global-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-left">
+            <button class="mobile-menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteLeftNav">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <a href="index.html" class="logo-tile" aria-label="Extra-Time logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img">
+                    <defs>
+                        <radialGradient id="sphereGrad" cx="35%" cy="30%" r="95%">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+                            <stop offset="45%" stop-color="#2b2b2b" stop-opacity="0.22" />
+                            <stop offset="100%" stop-color="#0e0e0e" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="210" cy="180" r="155" fill="url(#sphereGrad)" stroke="#d62828" stroke-width="7" />
+                    <g font-family="Arial Black, sans-serif" text-anchor="middle">
+                        <text x="210" y="170" font-size="54" fill="#d62828">Extra</text>
+                        <text x="210" y="240" font-size="54" fill="#ffffff">Time</text>
+                    </g>
+                </svg>
+            </a>
+
+            <div class="brand-block" style="margin-right:10px;">
+                <div class="brand-title">NamibiaSports</div>
+                <div class="tagline">A home for Namibian sports</div>
+            </div>
+
+            <!-- SPORTS NAV -->
+            <nav class="sports-inline-nav" aria-label="Sports categories">
+                <ul class="sports-inline-list">
+                    <li class="active dropdown" data-sport="football">
+                        <a href="#" aria-haspopup="true" aria-expanded="false">
+                            <svg aria-hidden="true">
+                                <use href="#icon-football"></use>
+                            </svg> Football
+                        </a>
+                        <div class="mega-menu" role="menu">
+                            <a href="premier-league.html" role="menuitem">Premier League</a>
+                            <a href="namibia-premier.html" role="menuitem">Namibia Premier Football League</a>
+                            <a href="caf-competitions.html" role="menuitem">CAF Competitions</a>
+                            <a href="international-football.html" role="menuitem" class="active">International
+                                Football</a>
+                            <a href="transfers.html" role="menuitem">Transfers</a>
+                        </div>
+                    </li>
+                    <!-- Other sports items -->
+                </ul>
+            </nav>
+        </div>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeToggle" title="Toggle theme"><i class="fas fa-adjust"></i><span
+                    class="small muted">Theme</span></button>
+            <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i><span
+                    class="pill">3</span></button>
+            <a class="icon-btn" href="#" title="Profile"><i class="fas fa-user-circle"></i></a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="app" role="main">
+
+        <!-- LEFT NAV -->
+        <aside class="sidebar-left" id="siteLeftNav">
+            <div class="logo-compact"><i class="fas fa-futbol" style="color:var(--accent)"></i> NamibiaSports</div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="premier-league.html" class="nav-item"><i class="fas fa-trophy"></i> Premier League</a>
+                <a href="namibia-premier.html" class="nav-item"><i class="fas fa-flag"></i> Namibia Premier</a>
+                <a href="caf-competitions.html" class="nav-item"><i class="fas fa-globe-africa"></i> CAF
+                    Competitions</a>
+                <a href="international-football.html" class="nav-item active"><i class="fas fa-globe"></i>
+                    International</a>
+                <a href="transfers.html" class="nav-item"><i class="fas fa-exchange-alt"></i> Transfers</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <section class="main">
+            <header class="main-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search International Football...">
+                </div>
+            </header>
+
+            <!-- PAGE HEADER -->
+            <section class="hero-banner">
+                <div style="flex:1">
+                    <div class="hero-label">Football • Worldwide</div>
+                    <h1 class="hero-title">International Football</h1>
+                    <p class="hero-excerpt">Global football coverage including World Cup qualifiers, continental
+                        championships, and international friendlies featuring Namibia's Brave Warriors.</p>
+                </div>
+                <div style="width:320px;min-width:220px;">
+                    <img src="https://via.placeholder.com/320x180/333333/ff7b00?text=World+Cup"
+                        alt="International Football" style="border-radius:10px">
+                </div>
+            </section>
+
+            <!-- CONTENT -->
+            <div class="content-container">
+                <!-- BRAVE WARRIORS -->
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">Namibia Brave Warriors</h2>
+                    <div class="breaking-news-grid">
+                        <article class="breaking-news-card">
+                            <div class="news-tag football">World Cup Qualifiers</div>
+                            <h3>Brave Warriors Prepare for Senegal Clash</h3>
+                            <p class="muted">Namibia national team begins preparations for crucial World Cup qualifier
+                                against African champions.</p>
+                            <div class="muted small" style="margin-top:8px">Today • <i class="far fa-eye"></i> 7.8k
+                            </div>
+                        </article>
+                        <article class="breaking-news-card">
+                            <div class="news-tag football">Squad Announcement</div>
+                            <h3>New Faces in Warriors Squad</h3>
+                            <p class="muted">Coach includes three new players for upcoming international matches.</p>
+                            <div class="muted small" style="margin-top:8px">Yesterday • <i class="far fa-eye"></i> 5.2k
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- WORLD CUP QUALIFYING -->
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">World Cup 2026 Qualifying</h2>
+                    <div class="card">
+                        <h3>Africa Qualifiers - Group H</h3>
+                        <div style="overflow-x:auto;margin-top:12px">
+                            <table style="width:100%;border-collapse:collapse;">
+                                <thead>
+                                    <tr style="border-bottom:1px solid var(--border)">
+                                        <th style="padding:12px;text-align:left">Team</th>
+                                        <th style="padding:12px;text-align:center">P</th>
+                                        <th style="padding:12px;text-align:center">Pts</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom:1px solid var(--border)">
+                                        <td style="padding:12px"><strong>Senegal</strong></td>
+                                        <td style="padding:12px;text-align:center">2</td>
+                                        <td style="padding:12px;text-align:center">6</td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid var(--border)">
+                                        <td style="padding:12px">Mozambique</td>
+                                        <td style="padding:12px;text-align:center">2</td>
+                                        <td style="padding:12px;text-align:center">3</td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid var(--border)">
+                                        <td style="padding:12px">Namibia</td>
+                                        <td style="padding:12px;text-align:center">2</td>
+                                        <td style="padding:12px;text-align:center">3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- UPCOMING MATCHES -->
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">International Fixtures</h2>
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div style="flex:1">
+                                <div style="font-weight:800">Namibia vs Senegal</div>
+                                <div class="muted small">World Cup Qualifier • March 25, 2025 • Independence Stadium
+                                </div>
+                            </div>
+                            <div class="pill">WORLD CUP</div>
+                        </div>
+                        <div class="news-item">
+                            <div style="flex:1">
+                                <div style="font-weight:800">Mozambique vs Namibia</div>
+                                <div class="muted small">World Cup Qualifier • June 5, 2025 • Maputo</div>
+                            </div>
+                            <div class="pill">WORLD CUP</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="sidebar-right">
+            <section>
+                <h3 class="widget-title"><i class="fas fa-flag"></i> Brave Warriors Squad</h3>
+                <div style="background:var(--card);padding:12px;border-radius:10px;border:1px solid var(--border)">
+                    <div style="font-weight:800;margin-bottom:8px">Key Players</div>
+                    <div class="muted small">• Peter Shalulile (Captain)</div>
+                    <div class="muted small">• Deon Hotto</div>
+                    <div class="muted small">• Lloyd Kazapua</div>
+                    <a href="#" class="btn btn-primary" style="margin-top:8px;display:inline-block">Full Squad</a>
+                </div>
+            </section>
+
+            <section style="margin-top:14px">
+                <h3 class="widget-title"><i class="fas fa-trophy"></i> FIFA Rankings</h3>
+                <div class="card">
+                    <div style="font-weight:800">Africa Top 5</div>
+                    <div class="muted small" style="margin-top:8px">1. Morocco</div>
+                    <div class="muted small">2. Senegal</div>
+                    <div class="muted small">3. Nigeria</div>
+                    <div class="muted small">4. Egypt</div>
+                    <div class="muted small">5. Ivory Coast</div>
+                    <div class="small" style="color:var(--accent);margin-top:4px">Namibia: 115th</div>
+                </div>
+            </section>
+        </aside>
+    </div>
+
+    <footer class="site-footer">© Extra-Time / NamibiaSports 2025 — International Football Coverage</footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

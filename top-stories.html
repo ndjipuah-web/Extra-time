@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Top Stories • Extra-Time NamibiaSports</title>
+    <meta name="description"
+        content="Breaking news and top stories from all sports - football, rugby, athletics, cricket and more" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- SVG ICONS -->
+    <svg style="display:none;" aria-hidden="true" focusable="false">
+        <symbol id="icon-football" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+            <path d="M12 2 L15 8 L9 8 Z M12 22 L15 16 L9 16 Z" fill="currentColor" />
+        </symbol>
+        <symbol id="icon-rugby" viewBox="0 0 24 24">
+            <ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" stroke-width="2" fill="none" />
+        </symbol>
+        <symbol id="icon-athletics" viewBox="0 0 24 24">
+            <path d="M6 18 L10 10 L14 14 L18 6" stroke="currentColor" stroke-width="2" fill="none" />
+        </symbol>
+        <symbol id="icon-cricket" viewBox="0 0 24 24">
+            <path d="M6 3 L18 21" stroke="currentColor" stroke-width="2" />
+            <circle cx="14" cy="10" r="3" stroke="currentColor" stroke-width="2" fill="none" />
+        </symbol>
+    </svg>
+
+    <!-- TOP NAV -->
+    <nav class="global-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-left">
+            <button class="mobile-menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteLeftNav">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <a href="index.html" class="logo-tile" aria-label="Extra-Time logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img">
+                    <defs>
+                        <radialGradient id="sphereGrad" cx="35%" cy="30%" r="95%">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+                            <stop offset="45%" stop-color="#2b2b2b" stop-opacity="0.22" />
+                            <stop offset="100%" stop-color="#0e0e0e" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="210" cy="180" r="155" fill="url(#sphereGrad)" stroke="#d62828" stroke-width="7" />
+                    <g font-family="Arial Black, sans-serif" text-anchor="middle">
+                        <text x="210" y="170" font-size="54" fill="#d62828">Extra</text>
+                        <text x="210" y="240" font-size="54" fill="#ffffff">Time</text>
+                    </g>
+                </svg>
+            </a>
+
+            <div class="brand-block" style="margin-right:10px;">
+                <div class="brand-title">NamibiaSports</div>
+                <div class="tagline">A home for Namibian sports</div>
+            </div>
+
+            <!-- SPORTS NAV -->
+            <nav class="sports-inline-nav" aria-label="Sports categories">
+                <ul class="sports-inline-list">
+                    <li class="dropdown" data-sport="football">
+                        <a href="#" aria-haspopup="true" aria-expanded="false">
+                            <svg aria-hidden="true">
+                                <use href="#icon-football"></use>
+                            </svg> Football
+                        </a>
+                        <div class="mega-menu" role="menu">
+                            <a href="premier-league.html" role="menuitem">Premier League</a>
+                            <a href="namibia-premier.html" role="menuitem">Namibia Premier Football League</a>
+                            <a href="caf-competitions.html" role="menuitem">CAF Competitions</a>
+                            <a href="international-football.html" role="menuitem">International Football</a>
+                            <a href="transfers.html" role="menuitem">Transfers</a>
+                        </div>
+                    </li>
+                    <!-- Other sports items can be added here -->
+                </ul>
+            </nav>
+        </div>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeToggle" title="Toggle theme"><i class="fas fa-adjust"></i><span
+                    class="small muted">Theme</span></button>
+            <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i><span
+                    class="pill">3</span></button>
+            <a class="icon-btn" href="#" title="Profile"><i class="fas fa-user-circle"></i></a>
+        </div>
+    </nav>
+    <nav class="nav-links">
+        <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+        <a href="top-stories.html" class="nav-item"><i class="fas fa-newspaper"></i> Top Stories</a>
+        <!-- other links -->
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="app" role="main">
+
+        <!-- LEFT NAV -->
+        <aside class="sidebar-left" id="siteLeftNav">
+            <div class="logo-compact"><i class="fas fa-futbol" style="color:var(--accent)"></i> NamibiaSports</div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="top-stories.html" class="nav-item active"><i class="fas fa-newspaper"></i> Top Stories</a>
+                <a href="premier-league.html" class="nav-item"><i class="fas fa-trophy"></i> Premier League</a>
+                <a href="namibia-premier.html" class="nav-item"><i class="fas fa-flag"></i> Namibia Premier</a>
+                <a href="caf-competitions.html" class="nav-item"><i class="fas fa-globe-africa"></i> CAF
+                    Competitions</a>
+                <a href="international-football.html" class="nav-item"><i class="fas fa-globe"></i> International</a>
+                <a href="transfers.html" class="nav-item"><i class="fas fa-exchange-alt"></i> Transfers</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <section class="main">
+            <header class="main-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search top stories..." aria-label="Search top stories">
+                </div>
+                <div class="header-icons">
+                    <button class="icon-btn" id="sortBtn" title="Sort stories"><i class="fas fa-sort"></i></button>
+                    <button class="icon-btn" id="refreshBtn" title="Refresh stories"><i
+                            class="fas fa-sync-alt"></i></button>
+                </div>
+            </header>
+
+            <!-- BREAKING NEWS ALERT -->
+            <div class="breaking-alert">
+                <i class="fas fa-bolt"></i>
+                <div>
+                    <strong>BREAKING:</strong> Namibia qualifies for AFCON quarterfinals after dramatic penalty shootout
+                    victory
+                </div>
+            </div>
+
+            <!-- PAGE HEADER -->
+            <section class="hero-banner">
+                <div style="flex:1">
+                    <div class="hero-label">All Sports • Live Updates</div>
+                    <h1 class="hero-title">Top Stories</h1>
+                    <p class="hero-excerpt">The most important sports news from Namibia and around the world. Breaking
+                        news, live updates, and in-depth analysis.</p>
+                </div>
+                <div style="width:320px;min-width:220px;">
+                    <img src="https://via.placeholder.com/320x180/333333/ff7b00?text=Top+Stories" alt="Top Stories"
+                        style="border-radius:10px">
+                </div>
+            </section>
+
+            <!-- FILTER TABS -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Stories</button>
+                <button class="filter-tab" data-filter="breaking">Breaking News</button>
+                <button class="filter-tab" data-filter="football">Football</button>
+                <button class="filter-tab" data-filter="rugby">Rugby</button>
+                <button class="filter-tab" data-filter="athletics">Athletics</button>
+                <button class="filter-tab" data-filter="cricket">Cricket</button>
+                <button class="filter-tab" data-filter="featured">Featured</button>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="content-container">
+
+                <!-- FEATURED STORY -->
+                <article class="top-story-card featured" data-category="breaking football" data-featured="true">
+                    <img src="https://via.placeholder.com/800x400/333333/ff7b00?text=AFCON+Victory"
+                        alt="Namibia AFCON Victory" style="width:100%;height:300px;object-fit:cover">
+                    <div class="story-header">
+                        <div style="display:flex;align-items:center;margin-bottom:12px">
+                            <span class="story-category">
+                                <i class="fas fa-futbol"></i> Football • AFCON
+                            </span>
+                            <span class="trending-badge">TRENDING</span>
+                        </div>
+                        <h2 style="margin:0;font-size:24px;line-height:1.3">Historic Victory: Namibia Stuns Ghana to
+                            Reach AFCON Quarterfinals</h2>
+                        <p class="story-excerpt">The Brave Warriors secure their place in African football history with
+                            a dramatic penalty shootout victory over tournament favorites Ghana. Peter Shalulile's late
+                            equalizer forces extra time before heroic goalkeeping seals the win.</p>
+                        <div class="story-meta">
+                            <span><i class="far fa-clock"></i> 45 minutes ago</span>
+                            <span><i class="far fa-eye"></i> 15.2K views</span>
+                            <span><i class="far fa-comment"></i> 342 comments</span>
+                        </div>
+                    </div>
+                    <div class="story-footer">
+                        <div class="author-info">
+                            <div class="author-avatar">SJ</div>
+                            <div>
+                                <div style="font-weight:700">Sarah Johnson</div>
+                                <div class="muted small">Sports Correspondent</div>
+                            </div>
+                        </div>
+                        <div class="read-time">
+                            <i class="far fa-clock"></i> 4 min read
+                        </div>
+                    </div>
+                </article>
+
+                <!-- TRENDING STORIES GRID -->
+                <h2 class="section-title">Trending Now</h2>
+                <div class="trending-stories">
+
+                    <!-- Story 1 -->
+                    <article class="top-story-card" data-category="athletics">
+                        <div class="video-story">
+                            <img src="https://via.placeholder.com/400x250/333333/ff7b00?text=Mboma+Record"
+                                alt="Christine Mboma" style="width:100%;height:200px;object-fit:cover">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="story-header">
+                            <span class="story-category">
+                                <i class="fas fa-running"></i> Athletics
+                            </span>
+                            <h3 style="margin:12px 0 8px">Christine Mboma Breaks 200m National Record</h3>
+                            <p class="story-excerpt">Olympic silver medalist sets new Namibian record in Diamond League
+                                meeting, clocking 21.78 seconds.</p>
+                            <div class="story-meta">
+                                <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Story 2 -->
+                    <article class="top-story-card" data-category="rugby">
+                        <img src="https://via.placeholder.com/400x250/333333/ff7b00?text=Welwitschias"
+                            alt="Welwitschias" style="width:100%;height:200px;object-fit:cover">
+                        <div class="story-header">
+                            <span class="story-category">
+                                <i class="fas fa-football-ball"></i> Rugby
+                            </span>
+                            <h3 style="margin:12px 0 8px">Welwitschias Announce Squad for World Cup Qualifiers</h3>
+                            <p class="story-excerpt">National rugby team reveals 35-man squad for crucial qualification
+                                matches against Zimbabwe and Kenya.</p>
+                            <div class="story-meta">
+                                <span><i class="far fa-clock"></i> 4 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Story 3 -->
+                    <article class="top-story-card" data-category="cricket">
+                        <img src="https://via.placeholder.com/400x250/333333/ff7b00?text=Namibia+Cricket"
+                            alt="Namibia Cricket" style="width:100%;height:200px;object-fit:cover">
+                        <div class="story-header">
+                            <span class="story-category">
+                                <i class="fas fa-baseball-ball"></i> Cricket
+                            </span>
+                            <h3 style="margin:12px 0 8px">Namibia Eagles Secure T20 World Cup Berth</h3>
+                            <p class="story-excerpt">National cricket team qualifies for 2024 T20 World Cup with
+                                dominant performance in African qualifiers.</p>
+                            <div class="story-meta">
+                                <span><i class="far fa-clock"></i> 6 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- MORE STORIES -->
+                <h2 class="section-title" style="margin-top:30px">More Stories</h2>
+
+                <!-- Story 4 -->
+                <article class="top-story-card" data-category="football">
+                    <div class="story-header">
+                        <span class="story-category">
+                            <i class="fas fa-futbol"></i> Football • Transfers
+                        </span>
+                        <h3 style="margin:12px 0 8px">African Stars Complete Signing of Zambian Striker</h3>
+                        <p class="story-excerpt">Defending NPFL champions strengthen attacking options with signing of
+                            experienced forward from Zambian Super League.</p>
+                        <div class="story-meta">
+                            <span><i class="far fa-clock"></i> 8 hours ago</span>
+                            <span><i class="far fa-eye"></i> 4.3K views</span>
+                        </div>
+                    </div>
+                    <div class="story-footer">
+                        <div class="author-info">
+                            <div class="author-avatar">DB</div>
+                            <div class="muted small">David Brown</div>
+                        </div>
+                        <div class="read-time">
+                            <i class="far fa-clock"></i> 2 min read
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Story 5 -->
+                <article class="top-story-card" data-category="football">
+                    <div class="story-header">
+                        <span class="story-category">
+                            <i class="fas fa-futbol"></i> Football • CAF
+                        </span>
+                        <h3 style="margin:12px 0 8px">CAF Announces New Champions League Format</h3>
+                        <p class="story-excerpt">African football governing body reveals changes to premier club
+                            competition, increasing group stage teams and prize money.</p>
+                        <div class="story-meta">
+                            <span><i class="far fa-clock"></i> 1 day ago</span>
+                            <span><i class="far fa-eye"></i> 8.7K views</span>
+                        </div>
+                    </div>
+                    <div class="story-footer">
+                        <div class="author-info">
+                            <div class="author-avatar">MJ</div>
+                            <div class="muted small">Maria Johnson</div>
+                        </div>
+                        <div class="read-time">
+                            <i class="far fa-clock"></i> 3 min read
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Story 6 -->
+                <article class="top-story-card" data-category="athletics">
+                    <div class="story-header">
+                        <span class="story-category">
+                            <i class="fas fa-running"></i> Athletics • Development
+                        </span>
+                        <h3 style="margin:12px 0 8px">New Athletics Academy Launched in Windhoek</h3>
+                        <p class="story-excerpt">Olympic medalists partner with sports ministry to establish
+                            high-performance training center for young athletes.</p>
+                        <div class="story-meta">
+                            <span><i class="far fa-clock"></i> 1 day ago</span>
+                            <span><i class="far fa-eye"></i> 3.2K views</span>
+                        </div>
+                    </div>
+                    <div class="story-footer">
+                        <div class="author-info">
+                            <div class="author-avatar">PT</div>
+                            <div class="muted small">Paul Thomas</div>
+                        </div>
+                        <div class="read-time">
+                            <i class="far fa-clock"></i> 2 min read
+                        </div>
+                    </div>
+                </article>
+
+                <!-- LOAD MORE BUTTON -->
+                <div style="text-align:center;margin:30px 0">
+                    <button class="btn btn-primary" id="loadMoreBtn">
+                        <i class="fas fa-plus"></i> Load More Stories
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="sidebar-right">
+            <!-- LIVE SCORES -->
+            <section class="card-widget">
+                <h3 class="widget-title"><i class="fas fa-running" style="color:var(--accent)"></i> Live Scores</h3>
+                <div class="live-match" style="margin-bottom:10px">
+                    <div class="teams">
+                        <div class="team"><span class="team-name">Namibia</span><strong>1</strong></div>
+                        <div class="team"><strong>1</strong><span class="team-name">Ghana</span></div>
+                    </div>
+                    <div class="match-status live small">AFCON • 120'</div>
+                </div>
+                <div class="live-match">
+                    <div class="teams">
+                        <div class="team"><span class="team-name">African Stars</span><strong>2</strong></div>
+                        <div class="team"><strong>0</strong><span class="team-name">Black Africa</span></div>
+                    </div>
+                    <div class="match-status live small">NPFL • 85'</div>
+                </div>
+            </section>
+
+            <!-- TRENDING TOPICS -->
+            <section style="margin-top:14px">
+                <h3 class="widget-title"><i class="fas fa-fire" style="color:var(--accent)"></i> Trending Topics</h3>
+                <div style="display:flex;flex-direction:column;gap:8px">
+                    <a href="#" class="pill"
+                        style="background:rgba(255,123,0,0.1);color:var(--accent);text-decoration:none;text-align:center">#AFCON2025</a>
+                    <a href="#" class="pill"
+                        style="background:rgba(255,123,0,0.1);color:var(--accent);text-decoration:none;text-align:center">#BraveWarriors</a>
+                    <a href="#" class="pill"
+                        style="background:rgba(255,123,0,0.1);color:var(--accent);text-decoration:none;text-align:center">#MbomaRecord</a>
+                    <a href="#" class="pill"
+                        style="background:rgba(255,123,0,0.1);color:var(--accent);text-decoration:none;text-align:center">#NPFL</a>
+                </div>
+            </section>
+
+            <!-- MOST READ -->
+            <section style="margin-top:14px">
+                <h3 class="widget-title"><i class="fas fa-chart-line" style="color:var(--accent)"></i> Most Read</h3>
+                <ul class="headlines-list">
+                    <li class="headline-item">
+                        <a class="headline-link" href="#">AFCON: Namibia's Historic Run Continues</a>
+                        <span class="headline-time">15K</span>
+                    </li>
+                    <li class="headline-item">
+                        <a class="headline-link" href="#">Mboma Breaks 200m Record</a>
+                        <span class="headline-time">12K</span>
+                    </li>
+                    <li class="headline-item">
+                        <a class="headline-link" href="#">New Sports Minister Appointed</a>
+                        <span class="headline-time">8K</span>
+                    </li>
+                    <li class="headline-item">
+                        <a class="headline-link" href="#">Welwitschias World Cup Squad</a>
+                        <span class="headline-time">7K</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- NEWSLETTER -->
+            <section style="margin-top:14px">
+                <h3 class="widget-title"><i class="fas fa-envelope" style="color:var(--accent)"></i> Stay Updated</h3>
+                <p class="muted small">Get daily top stories delivered to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                    <button type="submit" class="btn newsletter-btn">Subscribe</button>
+                </form>
+            </section>
+        </aside>
+    </div>
+
+    <footer class="site-footer">
+        © Extra-Time / NamibiaSports 2025 — Top Stories Coverage
+    </footer>
+
+    <script>
+        // Top Stories specific functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Filter tabs functionality
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const storyCards = document.querySelectorAll('.top-story-card');
+
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Remove active class from all tabs
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    // Filter stories
+                    storyCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                        } else if (filter === 'featured') {
+                            if (card.getAttribute('data-featured') === 'true') {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        } else {
+                            const categories = card.getAttribute('data-category');
+                            if (categories && categories.includes(filter)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Load more functionality
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function () {
+                    // Simulate loading more stories
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-plus"></i> Load More Stories';
+                        alert('More stories would be loaded here in a real application.');
+                    }, 1000);
+                });
+            }
+
+            // Refresh stories
+            const refreshBtn = document.getElementById('refreshBtn');
+            if (refreshBtn) {
+                refreshBtn.addEventListener('click', function () {
+                    const icon = this.querySelector('i');
+                    icon.className = 'fas fa-spinner fa-spin';
+                    setTimeout(() => {
+                        icon.className = 'fas fa-sync-alt';
+                        alert('Stories refreshed!');
+                    }, 1000);
+                });
+            }
+
+            // Video play buttons
+            document.querySelectorAll('.video-play-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    alert('Video would play here in a real implementation.');
+                });
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CAF Competitions • Football • Extra-Time NamibiaSports</title>
+    <meta name="description"
+        content="African football coverage including CAF Champions League, Confederation Cup and AFCON" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- SVG ICONS -->
+    <svg style="display:none;" aria-hidden="true" focusable="false">
+        <symbol id="icon-football" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+            <path d="M12 2 L15 8 L9 8 Z M12 22 L15 16 L9 16 Z" fill="currentColor" />
+        </symbol>
+    </svg>
+
+    <!-- TOP NAV -->
+    <nav class="global-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-left">
+            <button class="mobile-menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteLeftNav">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <a href="index.html" class="logo-tile" aria-label="Extra-Time logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img">
+                    <defs>
+                        <radialGradient id="sphereGrad" cx="35%" cy="30%" r="95%">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+                            <stop offset="45%" stop-color="#2b2b2b" stop-opacity="0.22" />
+                            <stop offset="100%" stop-color="#0e0e0e" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="210" cy="180" r="155" fill="url(#sphereGrad)" stroke="#d62828" stroke-width="7" />
+                    <g font-family="Arial Black, sans-serif" text-anchor="middle">
+                        <text x="210" y="170" font-size="54" fill="#d62828">Extra</text>
+                        <text x="210" y="240" font-size="54" fill="#ffffff">Time</text>
+                    </g>
+                </svg>
+            </a>
+
+            <div class="brand-block" style="margin-right:10px;">
+                <div class="brand-title">NamibiaSports</div>
+                <div class="tagline">A home for Namibian sports</div>
+            </div>
+
+            <!-- SPORTS NAV -->
+            <nav class="sports-inline-nav" aria-label="Sports categories">
+                <ul class="sports-inline-list">
+                    <li class="active dropdown" data-sport="football">
+                        <a href="#" aria-haspopup="true" aria-expanded="false">
+                            <svg aria-hidden="true">
+                                <use href="#icon-football"></use>
+                            </svg> Football
+                        </a>
+                        <div class="mega-menu" role="menu">
+                            <a href="premier-league.html" role="menuitem">Premier League</a>
+                            <a href="namibia-premier.html" role="menuitem">Namibia Premier Football League</a>
+                            <a href="caf-competitions.html" role="menuitem" class="active">CAF Competitions</a>
+                            <a href="international-football.html" role="menuitem">International Football</a>
+                            <a href="transfers.html" role="menuitem">Transfers</a>
+                        </div>
+                    </li>
+                    <!-- Other sports items -->
+                </ul>
+            </nav>
+        </div>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeToggle" title="Toggle theme"><i class="fas fa-adjust"></i><span
+                    class="small muted">Theme</span></button>
+            <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i><span
+                    class="pill">3</span></button>
+            <a class="icon-btn" href="#" title="Profile"><i class="fas fa-user-circle"></i></a>
+        </div>
+    </nav>
+    <nav class="nav-links">
+        <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+        <a href="top-stories.html" class="nav-item"><i class="fas fa-newspaper"></i> Top Stories</a>
+        <!-- other links -->
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="app" role="main">
+
+        <!-- LEFT NAV -->
+        <aside class="sidebar-left" id="siteLeftNav">
+            <div class="logo-compact"><i class="fas fa-futbol" style="color:var(--accent)"></i> NamibiaSports</div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="premier-league.html" class="nav-item"><i class="fas fa-trophy"></i> Premier League</a>
+                <a href="namibia-premier.html" class="nav-item"><i class="fas fa-flag"></i> Namibia Premier</a>
+                <a href="caf-competitions.html" class="nav-item active"><i class="fas fa-globe-africa"></i> CAF
+                    Competitions</a>
+                <a href="international-football.html" class="nav-item"><i class="fas fa-globe"></i> International</a>
+                <a href="transfers.html" class="nav-item"><i class="fas fa-exchange-alt"></i> Transfers</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <section class="main">
+            <header class="main-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search CAF Competitions...">
+                </div>
+            </header>
+
+            <!-- PAGE HEADER -->
+            <section class="hero-banner">
+                <div style="flex:1">
+                    <div class="hero-label">Football • African</div>
+                    <h1 class="hero-title">CAF Competitions</h1>
+                    <p class="hero-excerpt">Complete coverage of African club and international football including
+                        Champions League, Confederation Cup, and AFCON.</p>
+                </div>
+                <div style="width:320px;min-width:220px;">
+                    <img src="https://via.placeholder.com/320x180/333333/ff7b00?text=CAF" alt="CAF Competitions"
+                        style="border-radius:10px">
+                </div>
+            </section>
+
+            <!-- CONTENT -->
+            <div class="content-container">
+                <!-- COMPETITION TABS -->
+                <section style="margin-bottom:18px">
+                    <div style="display:flex;gap:8px;margin-bottom:12px">
+                        <button class="btn btn-primary">Champions League</button>
+                        <button class="btn btn-secondary">Confederation Cup</button>
+                        <button class="btn btn-secondary">AFCON</button>
+                    </div>
+                </section>
+
+                <!-- CHAMPIONS LEAGUE -->
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">CAF Champions League</h2>
+                    <div class="breaking-news-grid">
+                        <article class="breaking-news-card">
+                            <div class="news-tag football">Round of 16</div>
+                            <h3>Al Ahly Secure Quarterfinal Spot</h3>
+                            <p class="muted">Egyptian giants overcome tough challenge from Moroccan opponents.</p>
+                            <div class="muted small" style="margin-top:8px">Yesterday • <i class="far fa-eye"></i> 12.4k
+                            </div>
+                        </article>
+                        <article class="breaking-news-card">
+                            <div class="news-tag football">Group Stage</div>
+                            <h3>Mamelodi Sundowns Top Group</h3>
+                            <p class="muted">South African champions finish group stage unbeaten.</p>
+                            <div class="muted small" style="margin-top:8px">2 days ago • <i class="far fa-eye"></i> 8.9k
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- FIXTURES -->
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">Upcoming Fixtures</h2>
+                    <div class="card">
+                        <div
+                            style="display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-bottom:12px">
+                            <div>
+                                <div style="font-weight:800">Wydad AC vs Al Ahly</div>
+                                <div class="muted small">Champions League Quarterfinal • Saturday, 20:00</div>
+                            </div>
+                            <div class="pill">LIVE</div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center">
+                            <div>
+                                <div style="font-weight:800">Zamalek vs Mamelodi Sundowns</div>
+                                <div class="muted small">Champions League Quarterfinal • Sunday, 18:00</div>
+                            </div>
+                            <div class="pill">LIVE</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- NAMIBIAN TEAMS IN CAF -->
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">Namibian Clubs in Africa</h2>
+                    <div class="card">
+                        <h3>African Stars CAF Campaign</h3>
+                        <p class="muted">Namibia's representatives in the CAF Confederation Cup prepare for preliminary
+                            round matches.</p>
+                        <div class="news-list" style="margin-top:12px">
+                            <div class="news-item">
+                                <div style="flex:1">
+                                    <div style="font-weight:800">African Stars vs AS Vita Club</div>
+                                    <div class="muted small">Confederation Cup • Next Week</div>
+                                </div>
+                                <div class="pill">UPCOMING</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="sidebar-right">
+            <section>
+                <h3 class="widget-title"><i class="fas fa-trophy"></i> Champions League Groups</h3>
+                <div style="background:var(--card);padding:12px;border-radius:10px;border:1px solid var(--border)">
+                    <div style="font-weight:800;margin-bottom:8px">Group A Standings</div>
+                    <div class="muted small">1. Al Ahly (Egypt) - 12pts</div>
+                    <div class="muted small">2. Wydad AC (Morocco) - 9pts</div>
+                </div>
+            </section>
+
+            <section style="margin-top:14px">
+                <h3 class="widget-title"><i class="fas fa-calendar"></i> AFCON 2025</h3>
+                <div class="card">
+                    <div style="font-weight:800">Qualifying Groups</div>
+                    <div class="muted small" style="margin-top:8px">Namibia placed in Group H with Senegal, Mozambique,
+                        and Rwanda</div>
+                    <a href="#" class="btn btn-primary" style="margin-top:8px;display:inline-block">Full Draw</a>
+                </div>
+            </section>
+        </aside>
+    </div>
+
+    <footer class="site-footer">© Extra-Time / NamibiaSports 2025 — CAF Competitions Coverage</footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

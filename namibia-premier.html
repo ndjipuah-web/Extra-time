@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Namibia Premier Football League • Football • Extra-Time NamibiaSports</title>
+    <meta name="description" content="Latest news, fixtures and results from Namibia Premier Football League" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- SVG ICONS -->
+    <svg style="display:none;" aria-hidden="true" focusable="false">
+        <symbol id="icon-football" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+            <path d="M12 2 L15 8 L9 8 Z M12 22 L15 16 L9 16 Z" fill="currentColor" />
+        </symbol>
+    </svg>
+
+    <!-- TOP NAV -->
+    <nav class="global-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-left">
+            <button class="mobile-menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteLeftNav">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <a href="index.html" class="logo-tile" aria-label="Extra-Time logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img">
+                    <defs>
+                        <radialGradient id="sphereGrad" cx="35%" cy="30%" r="95%">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+                            <stop offset="45%" stop-color="#2b2b2b" stop-opacity="0.22" />
+                            <stop offset="100%" stop-color="#0e0e0e" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="210" cy="180" r="155" fill="url(#sphereGrad)" stroke="#d62828" stroke-width="7" />
+                    <g font-family="Arial Black, sans-serif" text-anchor="middle">
+                        <text x="210" y="170" font-size="54" fill="#d62828">Extra</text>
+                        <text x="210" y="240" font-size="54" fill="#ffffff">Time</text>
+                    </g>
+                </svg>
+            </a>
+
+            <div class="brand-block" style="margin-right:10px;">
+                <div class="brand-title">NamibiaSports</div>
+                <div class="tagline">A home for Namibian sports</div>
+            </div>
+
+            <!-- SPORTS NAV -->
+            <nav class="sports-inline-nav" aria-label="Sports categories">
+                <ul class="sports-inline-list">
+                    <li class="active dropdown" data-sport="football">
+                        <a href="#" aria-haspopup="true" aria-expanded="false">
+                            <svg aria-hidden="true">
+                                <use href="#icon-football"></use>
+                            </svg> Football
+                        </a>
+                        <div class="mega-menu" role="menu">
+                            <a href="premier-league.html" role="menuitem">Premier League</a>
+                            <a href="namibia-premier.html" role="menuitem" class="active">Namibia Premier Football
+                                League</a>
+                            <a href="caf-competitions.html" role="menuitem">CAF Competitions</a>
+                            <a href="international-football.html" role="menuitem">International Football</a>
+                            <a href="transfers.html" role="menuitem">Transfers</a>
+                        </div>
+                    </li>
+                    <!-- Other sports items -->
+                </ul>
+            </nav>
+        </div>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeToggle" title="Toggle theme"><i class="fas fa-adjust"></i><span
+                    class="small muted">Theme</span></button>
+            <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i><span
+                    class="pill">3</span></button>
+            <a class="icon-btn" href="#" title="Profile"><i class="fas fa-user-circle"></i></a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="app" role="main">
+
+        <!-- LEFT NAV -->
+        <aside class="sidebar-left" id="siteLeftNav">
+            <div class="logo-compact"><i class="fas fa-futbol" style="color:var(--accent)"></i> NamibiaSports</div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="premier-league.html" class="nav-item"><i class="fas fa-trophy"></i> Premier League</a>
+                <a href="namibia-premier.html" class="nav-item active"><i class="fas fa-flag"></i> Namibia Premier</a>
+                <a href="caf-competitions.html" class="nav-item"><i class="fas fa-globe-africa"></i> CAF
+                    Competitions</a>
+                <a href="international-football.html" class="nav-item"><i class="fas fa-globe"></i> International</a>
+                <a href="transfers.html" class="nav-item"><i class="fas fa-exchange-alt"></i> Transfers</a>
+            </nav>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="top-stories.html" class="nav-item"><i class="fas fa-newspaper"></i> Top Stories</a>
+                <!-- other links -->
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <section class="main">
+            <header class="main-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search Namibia Premier League...">
+                </div>
+            </header>
+
+            <!-- PAGE HEADER -->
+            <section class="hero-banner">
+                <div style="flex:1">
+                    <div class="hero-label">Football • Domestic</div>
+                    <h1 class="hero-title">Namibia Premier Football League</h1>
+                    <p class="hero-excerpt">Comprehensive coverage of Namibia's top football division. Live scores, team
+                        news, and exclusive interviews.</p>
+                </div>
+                <div style="width:320px;min-width:220px;">
+                    <img src="https://via.placeholder.com/320x180/333333/ff7b00?text=NPFL" alt="Namibia Premier League"
+                        style="border-radius:10px">
+                </div>
+            </section>
+
+            <!-- CONTENT -->
+            <div class="content-container">
+                <!-- BREAKING NEWS -->
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">Breaking News</h2>
+                    <div class="breaking-news-grid">
+                        <article class="breaking-news-card">
+                            <div class="news-tag football">Match Report</div>
+                            <h3>African Stars Extend Lead at Top</h3>
+                            <p class="muted">Defending champions secure important 2-0 victory against Black Africa in
+                                Windhoek derby.</p>
+                            <div class="muted small" style="margin-top:8px">3 hours ago • <i class="far fa-eye"></i>
+                                4.2k</div>
+                        </article>
+                        <article class="breaking-news-card">
+                            <div class="news-tag football">Transfer News</div>
+                            <h3>Young Talent Signs for Civics FC</h3>
+                            <p class="muted">Promising midfielder joins from academy setup in three-year deal.</p>
+                            <div class="muted small" style="margin-top:8px">6 hours ago • <i class="far fa-eye"></i>
+                                2.8k</div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- LEAGUE TABLE -->
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">NPFL Standings</h2>
+                    <div class="card">
+                        <div style="overflow-x:auto;">
+                            <table style="width:100%;border-collapse:collapse;">
+                                <thead>
+                                    <tr style="border-bottom:1px solid var(--border)">
+                                        <th style="padding:12px;text-align:left">#</th>
+                                        <th style="padding:12px;text-align:left">Team</th>
+                                        <th style="padding:12px;text-align:center">P</th>
+                                        <th style="padding:12px;text-align:center">GD</th>
+                                        <th style="padding:12px;text-align:center">Pts</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom:1px solid var(--border)">
+                                        <td style="padding:12px">1</td>
+                                        <td style="padding:12px"><strong>African Stars</strong></td>
+                                        <td style="padding:12px;text-align:center">12</td>
+                                        <td style="padding:12px;text-align:center">+18</td>
+                                        <td style="padding:12px;text-align:center">28</td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid var(--border)">
+                                        <td style="padding:12px">2</td>
+                                        <td style="padding:12px">Black Africa</td>
+                                        <td style="padding:12px;text-align:center">12</td>
+                                        <td style="padding:12px;text-align:center">+12</td>
+                                        <td style="padding:12px;text-align:center">25</td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid var(--border)">
+                                        <td style="padding:12px">3</td>
+                                        <td style="padding:12px">Orlando Pirates</td>
+                                        <td style="padding:12px;text-align:center">12</td>
+                                        <td style="padding:12px;text-align:center">+8</td>
+                                        <td style="padding:12px;text-align:center">22</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- RECENT RESULTS -->
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">Recent Results</h2>
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div style="flex:1">
+                                <div style="font-weight:800">African Stars 2 - 0 Black Africa</div>
+                                <div class="muted small">Sam Nujoma Stadium • Yesterday</div>
+                            </div>
+                            <div class="pill">NPFL</div>
+                        </div>
+                        <div class="news-item">
+                            <div style="flex:1">
+                                <div style="font-weight:800">Civics FC 1 - 1 Orlando Pirates</div>
+                                <div class="muted small">Independence Stadium • 2 days ago</div>
+                            </div>
+                            <div class="pill">NPFL</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- UPCOMING FIXTURES -->
+                <section style="margin-bottom:18px">
+                    <h2 class="section-title">Next Matches</h2>
+                    <div class="card">
+                        <div style="display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center">
+                            <div>
+                                <div style="font-weight:800">Tigers FC vs African Stars</div>
+                                <div class="muted small">Saturday, 15:00 • Sam Nujoma Stadium</div>
+                            </div>
+                            <div class="pill">LIVE ON EXTRA-TIME TV</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="sidebar-right">
+            <section>
+                <h3 class="widget-title"><i class="fas fa-running"></i> Live NPFL</h3>
+                <div class="live-match">
+                    <div class="teams">
+                        <div class="team"><span class="team-name">Civics FC</span><strong>1</strong></div>
+                        <div class="team"><strong>1</strong><span class="team-name">Orlando Pirates</span></div>
+                    </div>
+                    <div class="match-status live small">Live 78'</div>
+                </div>
+            </section>
+
+            <section style="margin-top:14px">
+                <h3 class="widget-title"><i class="fas fa-star"></i> Player of the Month</h3>
+                <div
+                    style="text-align:center;padding:12px;background:var(--card);border-radius:10px;border:1px solid var(--border)">
+                    <img src="https://via.placeholder.com/80x80/333333/ff7b00?text=Player" alt="Player"
+                        style="border-radius:50%;margin:0 auto 8px">
+                    <div style="font-weight:800">Peter Shalulile</div>
+                    <div class="muted small">African Stars</div>
+                    <div class="small" style="color:var(--accent);margin-top:4px">8 goals this month</div>
+                </div>
+            </section>
+        </aside>
+    </div>
+
+    <footer class="site-footer">© Extra-Time / NamibiaSports 2025 — Namibia Premier Football League Coverage</footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

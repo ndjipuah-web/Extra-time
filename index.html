@@ -2,1814 +2,352 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Extra-Time • NamibiaSports</title>
-  <meta name="description"
-    content="Extra-Time is Namibia's premier digital sports publication — delivering news, features, live updates and video across football, rugby, athletics, cricket and more." />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* ======================================================
-THEME VARIABLES — DEFAULT DARK (Extra-Time origins)
-====================================================== */
-    :root {
-      --accent: #ff7b00;
-      /* NamibiaSports orange */
-      --accent-2: #d62828;
-      /* Extra-Time red */
-      --bg: #0e0e0e;
-      --text: #ffffff;
-      --muted: #bbbbbb;
-      --card: #181818;
-      --surface: #141414;
-      --border: #222;
-      --nav: #101010;
-      --sidebar: #131313;
-      --logo-bg: #0e0e0e;
-      /* locked dark so SVG stays correct */
-
-      --radius: 12px;
-      --pad: 16px;
-      --max-width: 1350px;
-      --transition: 180ms ease;
-      --shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-
-      /* text tokens for modular CSS (used by sports nav) */
-      --et-text-primary: var(--text);
-      --et-text-secondary: var(--muted);
-      --et-surface: var(--surface);
-      --et-border: var(--border);
-      --et-accent: var(--accent);
-    }
-
-    /* Light mode tokens (applied by JS setLight or .light-mode class) */
-    .light-mode {
-      --bg: #f5f5f5;
-      --text: #0a0a0a;
-      --muted: #555;
-      --card: #ffffff;
-      --surface: #ffffff;
-      --border: #dcdcdc;
-      --nav: #ffffff;
-      --sidebar: #ffffff;
-      --logo-bg: #0e0e0e;
-      /* keep tile dark */
-      --et-text-primary: var(--text);
-      --et-text-secondary: var(--muted);
-    }
-
-    /* ======================================================
-GLOBAL
-====================================================== */
-    * {
-      box-sizing: border-box
-    }
-
-    html,
-    body {
-      height: 100%
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: var(--bg);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      line-height: 1.45;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit
-    }
-
-    img {
-      max-width: 100%;
-      display: block
-    }
-
-    .muted {
-      color: var(--muted)
-    }
-
-    .small {
-      font-size: 13px
-    }
-
-    /* ======================================================
-TOP NAV / LOGO TILE + SPORTS INLINE NAV (next to logo)
-====================================================== */
-    nav.global-nav {
-      background: var(--nav);
-      border-bottom: 2px solid var(--accent-2);
-      padding: 12px 18px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      position: sticky;
-      top: 0;
-      z-index: 120;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0
-    }
-
-    .logo-tile {
-      background: var(--logo-bg);
-      padding: 6px;
-      border-radius: 10px;
-      width: 140px;
-      min-width: 140px;
-      display: block;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-      text-decoration: none;
-    }
-
-    .brand-block {
-      display: flex;
-      flex-direction: column;
-      margin-left: 8px
-    }
-
-    .brand-block .brand-title {
-      font-weight: 900;
-      letter-spacing: 0.2px
-    }
-
-    .brand-block .tagline {
-      color: var(--muted);
-      font-size: 12px
-    }
-
-    .nav-actions {
-      margin-left: auto;
-      display: flex;
-      gap: 8px;
-      align-items: center
-    }
-
-    .icon-btn {
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--muted);
-      padding: 8px 10px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-    }
-
-    .icon-btn:hover {
-      color: var(--text);
-      transform: translateY(-1px)
-    }
-
-    /* Mobile menu toggle visible on mobile */
-    .mobile-menu-toggle {
-      display: none;
-      background: transparent;
-      border: 0;
-      color: var(--text);
-      font-size: 20px;
-      padding: 8px;
-      border-radius: 9px;
-      cursor: pointer;
-    }
-
-    /* ======================================================
-SPORTS INLINE NAV (next to logo)
-- horizontal, scrollable
-- icons, active item, mega-menu dropdowns
-====================================================== */
-    .sports-inline-nav {
-      overflow-x: auto;
-      white-space: nowrap;
-      scrollbar-width: none;
-      max-width: 57vw;
-      /* limited so logo + sports fit on big screens */
-      min-width: 0;
-      margin-left: 6px;
-    }
-
-    .sports-inline-nav::-webkit-scrollbar {
-      display: none
-    }
-
-    .sports-inline-list {
-      display: flex;
-      align-items: center;
-      gap: 1.1rem;
-      list-style: none;
-      margin: 0;
-      padding: 0.35rem 0.4rem;
-    }
-
-    .sports-inline-list li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .sports-inline-list a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--et-text-secondary);
-      padding: 6px 8px;
-      border-radius: 8px;
-      transition: color 150ms ease, background 150ms ease, transform 150ms ease;
-    }
-
-    .sports-inline-list a svg {
-      width: 18px;
-      height: 18px;
-      color: var(--et-text-secondary)
-    }
-
-    .sports-inline-list a:hover {
-      color: var(--et-accent);
-      transform: translateY(-2px);
-    }
-
-    .sports-inline-list li.active>a {
-      color: var(--et-accent);
-      box-shadow: inset 0 -3px 0 0 var(--et-accent);
-      background: linear-gradient(90deg, rgba(255, 123, 0, 0.03), transparent);
-    }
-
-    .sports-inline-list li.active svg {
-      color: var(--et-accent)
-    }
-
-    /* Mega menu */
-    .mega-menu {
-      position: absolute;
-      top: calc(100% + 10px);
-      left: 0;
-      min-width: 220px;
-      background: var(--et-surface);
-      border: 1px solid var(--et-border);
-      padding: 12px;
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      border-radius: 10px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-      z-index: 300;
-    }
-
-    .mega-menu a {
-      text-decoration: none;
-      color: var(--et-text-primary);
-      padding: 6px 8px;
-      border-radius: 6px;
-      display: block;
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-
-    .mega-menu a:hover {
-      color: var(--et-accent);
-      background: rgba(255, 255, 255, 0.02)
-    }
-
-    .sports-inline-list li:hover>.mega-menu {
-      display: flex
-    }
-
-    /* On focus-within show menu for keyboard users */
-    .sports-inline-list li:focus-within>.mega-menu {
-      display: flex
-    }
-
-    /* hide sports bar on small screens (we use sidebar instead) */
-    @media (max-width:960px) {
-      .sports-inline-nav {
-        display: none;
-      }
-
-      .mobile-menu-toggle {
-        display: inline-flex
-      }
-    }
-
-    /* ======================================================
-PAGE LAYOUT: grid - left nav, main content, right widgets
-====================================================== */
-    .app {
-      max-width: var(--max-width);
-      margin: 18px auto;
-      display: grid;
-      grid-template-columns: 260px 1fr 320px;
-      gap: 20px;
-      padding: 0 18px;
-    }
-
-    @media (max-width:1100px) {
-      .app {
-        grid-template-columns: 1fr 320px;
-        grid-template-rows: auto 1fr;
-        padding: 0 12px
-      }
-
-      .sidebar-left {
-        grid-column: 1 / 2;
-        grid-row: 2 / 3
-      }
-
-      .main {
-        grid-column: 1 / 2;
-        grid-row: 1 / 2
-      }
-
-      .sidebar-right {
-        grid-column: 2 / 3;
-        grid-row: 1 / 3
-      }
-    }
-
-    @media (max-width:820px) {
-      .app {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        gap: 12px;
-        padding: 0 12px
-      }
-
-      .sidebar-right {
-        order: 3
-      }
-
-      .sidebar-left {
-        order: 4
-      }
-
-      .main {
-        order: 2
-      }
-    }
-
-    /* LEFT NAV */
-    .sidebar-left {
-      background: var(--sidebar);
-      padding: var(--pad);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      height: fit-content;
-      position: sticky;
-      top: 88px;
-    }
-
-    .logo-compact {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      color: var(--text);
-      font-size: 18px;
-      margin-bottom: 12px
-    }
-
-    .logo-compact i {
-      color: var(--accent)
-    }
-
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 8px
-    }
-
-    .nav-item {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      padding: 10px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--muted);
-      transition: var(--transition);
-      font-weight: 700;
-      background: transparent;
-    }
-
-    .nav-item i {
-      width: 20px;
-      text-align: center
-    }
-
-    .nav-item:hover {
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.02);
-      transform: translateX(3px)
-    }
-
-    .nav-item.active {
-      color: var(--accent);
-      background: linear-gradient(90deg, rgba(255, 123, 0, 0.06), transparent)
-    }
-
-    /* MAIN CONTENT */
-    .main {
-      min-height: 400px
-    }
-
-    .main-header {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 14px
-    }
-
-    .search-bar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--card);
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      width: 100%
-    }
-
-    .search-bar input {
-      background: transparent;
-      border: 0;
-      outline: none;
-      color: var(--text);
-      font-size: 15px;
-      width: 380px;
-      max-width: 60vw
-    }
-
-    /* HERO */
-    .hero-banner {
-      background: linear-gradient(180deg, rgba(255, 123, 0, 0.06), transparent);
-      border: 1px solid var(--border);
-      padding: 22px;
-      border-radius: 14px;
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      box-shadow: var(--shadow);
-      margin-bottom: 18px
-    }
-
-    .hero-label {
-      font-size: 13px;
-      color: var(--accent);
-      font-weight: 800
-    }
-
-    .hero-title {
-      margin: 6px 0 8px;
-      font-size: 26px
-    }
-
-    .hero-excerpt {
-      margin: 0;
-      color: var(--muted)
-    }
-
-    .hero-actions {
-      margin-top: 12px;
-      display: flex;
-      gap: 10px
-    }
-
-    .btn {
-      padding: 10px 14px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      border: 0;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(255, 123, 0, 0.2);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #111
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text)
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    /* CONTENT AREAS */
-    .content-container {
-      display: block
-    }
-
-    .section-title {
-      font-weight: 900;
-      margin: 0 0 12px
-    }
-
-    .card {
-      background: var(--card);
-      padding: var(--pad);
-      border-radius: var(--radius);
-      margin-bottom: 15px;
-      border: 1px solid var(--border)
-    }
-
-    /* Breaking News */
-    .breaking-news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 12px
-    }
-
-    .breaking-news-card {
-      background: var(--card);
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .breaking-news-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    }
-
-    .news-tag {
-      display: inline-block;
-      padding: 6px 8px;
-      border-radius: 8px;
-      font-weight: 800;
-      font-size: 12px;
-      margin-bottom: 8px
-    }
-
-    .news-tag.football {
-      background: rgba(0, 120, 210, 0.08);
-      color: #4fb0ff
-    }
-
-    .news-tag.athletics {
-      background: rgba(200, 30, 150, 0.06);
-      color: #e598ff
-    }
-
-    .news-tag.rugby {
-      background: rgba(0, 150, 80, 0.08);
-      color: #4caf50
-    }
-
-    .news-tag.cricket {
-      background: rgba(255, 193, 7, 0.08);
-      color: #ffc107
-    }
-
-    .news-tag.boxing {
-      background: rgba(244, 67, 54, 0.08);
-      color: #f44336
-    }
-
-    .stories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 12px;
-      margin-top: 10px
-    }
-
-    .story-card {
-      display: flex;
-      flex-direction: column;
-      background: var(--card);
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .story-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    }
-
-    .story-image {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      display: block
-    }
-
-    .story-content {
-      padding: 12px
-    }
-
-    .news-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px
-    }
-
-    .news-item {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      padding: 10px;
-      background: var(--card);
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .news-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .news-thumb {
-      width: 120px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px
-    }
-
-    /* RIGHT sidebar widgets */
-    .sidebar-right {
-      background: var(--sidebar);
-      padding: var(--pad);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      height: fit-content;
-      position: sticky;
-      top: 88px
-    }
-
-    .widget-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 800;
-      margin: 0 0 12px
-    }
-
-    .live-match {
-      background: linear-gradient(90deg, rgba(255, 123, 0, 0.02),
-          transparent);
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.02)
-    }
-
-    .teams {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 8px
-    }
-
-    .team {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      font-weight: 800
-    }
-
-    .match-status {
-      font-weight: 700;
-      color: var(--muted);
-      padding: 6px 8px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.02)
-    }
-
-    .match-status.live {
-      color: #fff;
-      background: linear-gradient(90deg, #d62828, #ff7b00);
-      padding: 6px 10px
-    }
-
-    .headlines-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px
-    }
-
-    .headline-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px
-    }
-
-    .headline-link {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 700;
-      transition: var(--transition);
-    }
-
-    .headline-link:hover {
-      color: var(--accent);
-    }
-
-    .headline-time {
-      color: var(--muted);
-      font-size: 13px
-    }
-
-    .video-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px
-    }
-
-    .video-item {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      transition: var(--transition);
-    }
-
-    .video-item:hover {
-      transform: translateX(4px);
-    }
-
-    .video-thumb {
-      width: 80px;
-      height: 60px;
-      border-radius: 8px;
-      object-fit: cover
-    }
-
-    .video-title {
-      font-weight: 800;
-      color: var(--text);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .video-title:hover {
-      color: var(--accent);
-    }
-
-    .social-follow-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 10px
-    }
-
-    .social-follow-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px;
-      border-radius: 10px;
-      background: var(--card);
-      text-decoration: none;
-      color: var(--text);
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .social-follow-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .social-feed-container {
-      background: var(--card);
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border)
-    }
-
-    .newsletter-form {
-      display: flex;
-      gap: 8px;
-      margin-top: 8px
-    }
-
-    .newsletter-input {
-      flex: 1;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text)
-    }
-
-    .newsletter-btn {
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 0;
-      background: var(--accent);
-      color: #111;
-      font-weight: 800;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .newsletter-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(255, 123, 0, 0.2);
-    }
-
-    /* ABOUT & SECTIONS */
-    .section-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px
-    }
-
-    @media(max-width:900px) {
-      .section-grid {
-        grid-template-columns: 1fr
-      }
-    }
-
-    /* Footer */
-    footer.site-footer {
-      margin-top: 26px;
-      padding: 18px;
-      text-align: center;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      border-radius: 10px;
-      background: transparent
-    }
-
-    /* Small helpers */
-    .flex {
-      display: flex;
-      gap: 8px;
-      align-items: center
-    }
-
-    .pill {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-weight: 800
-    }
-
-    /* Smooth scrolling for anchor links */
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Extra-Time • NamibiaSports — Complete Sports Platform</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZKJRX2X52"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-YZKJRX2X52');
+    </script>
+
+    <!-- Your complete CSS styles (keep all your CSS as is) -->
+    <style>
+        /* ALL YOUR CSS STYLES STAY HERE - Don't change them */
+        /* ... your entire CSS code ... */
+    </style>
 </head>
 
-<body>
+<body class="accent-orange">
 
-  <!-- =========================
-       SVG ICON SET (inline defs)
-       ========================= -->
-  <svg style="display:none;" aria-hidden="true" focusable="false">
-    <symbol id="icon-football" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
-      <path d="M12 2 L15 8 L9 8 Z M12 22 L15 16 L9 16 Z" fill="currentColor" />
-    </symbol>
-    <symbol id="icon-rugby" viewBox="0 0 24 24">
-      <ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" stroke-width="2" fill="none" />
-    </symbol>
-    <symbol id="icon-athletics" viewBox="0 0 24 24">
-      <path d="M6 18 L10 10 L14 14 L18 6" stroke="currentColor" stroke-width="2" fill="none" />
-    </symbol>
-    <symbol id="icon-cricket" viewBox="0 0 24 24">
-      <path d="M6 3 L18 21" stroke="currentColor" stroke-width="2" />
-      <circle cx="14" cy="10" r="3" stroke="currentColor" stroke-width="2" fill="none" />
-    </symbol>
-    <symbol id="icon-boxing" viewBox="0 0 24 24">
-      <rect x="4" y="10" width="16" height="10" rx="4" stroke="currentColor" stroke-width="2" fill="none" />
-      <rect x="7" y="4" width="10" height="7" rx="3" stroke="currentColor" stroke-width="2" fill="none" />
-    </symbol>
-    <symbol id="icon-netball" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none" />
-      <path d="M4 12 H20 M12 4 V20" stroke="currentColor" stroke-width="2" />
-    </symbol>
-    <symbol id="icon-mma" viewBox="0 0 24 24">
-      <polygon points="6,4 18,4 22,12 18,20 6,20 2,12" stroke="currentColor" stroke-width="2" fill="none" />
-    </symbol>
-    <symbol id="icon-golf" viewBox="0 0 24 24">
-      <path d="M12 2 L12 16" stroke="currentColor" stroke-width="2" />
-      <circle cx="12" cy="20" r="2" fill="currentColor" />
-    </symbol>
-    <symbol id="icon-tennis" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none" />
-      <path d="M4 12 A8 8 0 0 1 20 12" stroke="currentColor" stroke-width="2" />
-    </symbol>
-    <symbol id="icon-basketball" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none" />
-      <path d="M12 3 V21 M3 12 H21" stroke="currentColor" stroke-width="2" />
-    </symbol>
-    <symbol id="icon-swimming" viewBox="0 0 24 24">
-      <path d="M2 16 C5 14, 7 18, 10 16 C13 14, 15 18, 18 16" stroke="currentColor" stroke-width="2" fill="none" />
-      <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2" fill="none" />
-    </symbol>
-    <symbol id="icon-horse" viewBox="0 0 24 24">
-      <path d="M4 14 L6 10 L10 8 L14 5 L20 8 L18 14 Z" stroke="currentColor" stroke-width="2" fill="none" />
-    </symbol>
-  </svg>
-
-  <!-- =========================
-       TOP NAV: LOGO + SPORTS BAR (sports nav next to logo)
-       ========================= -->
-  <nav class="global-nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-left">
-      <!-- Mobile toggle (shown on small screens) -->
-      <button class="mobile-menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteLeftNav"
-        title="Toggle menu">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- Locked-dark SVG logo tile -->
-      <a href="index.html" class="logo-tile" aria-label="Extra-Time logo (locked dark tile)">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-hidden="false" focusable="false">
-          <defs>
-            <radialGradient id="sphereGrad" cx="35%" cy="30%" r="95%">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
-              <stop offset="45%" stop-color="#2b2b2b" stop-opacity="0.22" />
-              <stop offset="100%" stop-color="#0e0e0e" />
-            </radialGradient>
-          </defs>
-          <circle cx="210" cy="180" r="155" fill="url(#sphereGrad)" stroke="#d62828" stroke-width="7" />
-          <g font-family="Arial Black, sans-serif" text-anchor="middle">
-            <text x="210" y="170" font-size="54" fill="#d62828">Extra</text>
-            <text x="210" y="240" font-size="54" fill="#ffffff">Time</text>
-          </g>
-        </svg>
-      </a>
-
-      <div class="brand-block" style="margin-right:10px;">
-        <div class="brand-title">NamibiaSports</div>
-        <div class="tagline">A home for Namibian sports</div>
-      </div>
-
-      <!-- SPORTS INLINE NAV placed next to logo (desktop) -->
-      <nav class="sports-inline-nav" aria-label="Sports categories">
-        <ul class="sports-inline-list">
-
-          <!-- Football active -->
-          <li class="active dropdown" data-sport="football">
-            <a href="#" aria-haspopup="true" aria-expanded="false">
-              <svg aria-hidden="true">
-                <use href="#icon-football"></use>
-              </svg> Football
-            </a>
-            <div class="mega-menu" role="menu" aria-label="Football menu">
-              <a href="premier-league.html" role="menuitem">Premier League</a>
-              <a href="namibia-premier.html" role="menuitem">Namibia Premier Football League</a>
-              <a href="caf-competitions.html" role="menuitem">CAF Competitions</a>
-              <a href="international-football.html" role="menuitem">International Football</a>
-              <a href="transfers.html" role="menuitem">Transfers</a>
-            </div>
-          </li>
-
-          <li class="dropdown" data-sport="rugby">
-            <a href="#" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true">
-                <use href="#icon-rugby"></use>
-              </svg> Rugby Union</a>
-            <div class="mega-menu" role="menu" aria-label="Rugby menu">
-              <a href="world-rugby.html" role="menuitem">World Rugby</a>
-              <a href="welwitschias.html" role="menuitem">Welwitschias</a>
-              <a href="rugby-7s.html" role="menuitem">Rugby 7s</a>
-            </div>
-          </li>
-
-          <li class="dropdown" data-sport="athletics">
-            <a href="#" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true">
-                <use href="#icon-athletics"></use>
-              </svg> Athletics</a>
-            <div class="mega-menu" role="menu" aria-label="Athletics menu">
-              <a href="track-events.html" role="menuitem">Track Events</a>
-              <a href="field-events.html" role="menuitem">Field Events</a>
-              <a href="marathon-roads.html" role="menuitem">Marathons & Road</a>
-            </div>
-          </li>
-
-          <li class="dropdown" data-sport="cricket">
-            <a href="#" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true">
-                <use href="#icon-cricket"></use>
-              </svg> Cricket</a>
-            <div class="mega-menu" role="menu" aria-label="Cricket menu">
-              <a href="namibia-eagles.html" role="menuitem">Namibia Eagles</a>
-              <a href="domestic-cricket.html" role="menuitem">Domestic</a>
-              <a href="international-cricket.html" role="menuitem">International</a>
-            </div>
-          </li>
-
-          <li class="dropdown" data-sport="boxing">
-            <a href="#" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true">
-                <use href="#icon-boxing"></use>
-              </svg> Boxing</a>
-            <div class="mega-menu" role="menu" aria-label="Boxing menu">
-              <a href="local-fights.html" role="menuitem">Local Fights</a>
-              <a href="international-bouts.html" role="menuitem">International Bouts</a>
-              <a href="boxing-profiles.html" role="menuitem">Profiles</a>
-            </div>
-          </li>
-
-          <li class="dropdown" data-sport="netball">
-            <a href="#" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true">
-                <use href="#icon-netball"></use>
-              </svg> Netball</a>
-            <div class="mega-menu" role="menu" aria-label="Netball menu">
-              <a href="namibia-netball.html" role="menuitem">Namibia Netball</a>
-              <a href="international-netball.html" role="menuitem">International</a>
-            </div>
-          </li>
-
-          <li class="dropdown" data-sport="mma">
-            <a href="#" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true">
-                <use href="#icon-mma"></use>
-              </svg> MMA</a>
-            <div class="mega-menu" role="menu" aria-label="MMA menu">
-              <a href="mma-events.html" role="menuitem">Events</a>
-              <a href="mma-fighters.html" role="menuitem">Fighters</a>
-            </div>
-          </li>
-
-          <li class="dropdown" data-sport="golf">
-            <a href="#" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true">
-                <use href="#icon-golf"></use>
-              </svg> Golf</a>
-            <div class="mega-menu" role="menu" aria-label="Golf menu">
-              <a href="golf-tournaments.html" role="menuitem">Tournaments</a>
-              <a href="golf-rankings.html" role="menuitem">Rankings</a>
-            </div>
-          </li>
-
-          <li class="dropdown" data-sport="tennis">
-            <a href="#" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true">
-                <use href="#icon-tennis"></use>
-              </svg> Tennis</a>
-            <div class="mega-menu" role="menu" aria-label="Tennis menu">
-              <a href="#" role="menuitem">Grand Slams</a>
-              <a href="#" role="menuitem">ATP / WTA</a>
-            </div>
-          </li>
-
-          <li class="dropdown" data-sport="basketball">
-            <a href="#" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true">
-                <use href="#icon-basketball"></use>
-              </svg> Basketball</a>
-            <div class="mega-menu" role="menu" aria-label="Basketball menu">
-              <a href="nba.html" role="menuitem">NBA</a>
-              <a href="local-basketball.html" role="menuitem">Local Leagues</a>
-            </div>
-          </li>
-
-          <li class="dropdown" data-sport="swimming">
-            <a href="#" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true">
-                <use href="#icon-swimming"></use>
-              </svg> Swimming</a>
-            <div class="mega-menu" role="menu" aria-label="Swimming menu">
-              <a href="swimming-events.html" role="menuitem">Events</a>
-              <a href="swimming-athletes.html" role="menuitem">Athletes</a>
-            </div>
-          </li>
-
-          <li class="dropdown" data-sport="horseracing">
-            <a href="#" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true">
-                <use href="#icon-horse"></use>
-              </svg> Horse Racing</a>
-            <div class="mega-menu" role="menu" aria-label="Horse Racing menu">
-              <a href="local-races.html" role="menuitem">Local Races</a>
-              <a href="international-horseracing.html" role="menuitem">International</a>
-            </div>
-          </li>
-
-        </ul>
-      </nav>
+    <!-- News Container -->
+    <div id="news" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Latest Sports News</h2>
+            <div id="news-content"></div>
+        </div>
     </div>
 
-    <!-- right side (actions) -->
-    <div class="nav-actions" role="region" aria-label="Header actions">
-      <button class="icon-btn" id="themeToggle" title="Toggle theme"><i class="fas fa-adjust"></i><span
-          class="small muted">Theme</span></button>
-      <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i><span class="pill">3</span></button>
-      <a class="icon-btn" href="#" title="Profile"><i class="fas fa-user-circle"></i></a>
-    </div>
-  </nav>
+    <!-- All your HTML content stays here -->
+    <!-- Header, navigation, pages, footer - keep everything as is -->
+    
+    <!-- Your SVG icons stay here -->
+    <svg style="display:none" aria-hidden="true" focusable="false">
+        <!-- All your SVG icons -->
+    </svg>
 
-  <!-- =========================
-       APP GRID: left nav, main, right widgets
-       ========================= -->
-  <div class="app" role="main">
+    <!-- All your page content stays here -->
+    <!-- Home page, sports pages, about, login, etc. -->
 
-    <!-- LEFT NAV -->
-    <aside class="sidebar-left" id="siteLeftNav" aria-label="Primary navigation">
-      <div class="logo-compact"><i class="fas fa-futbol" style="color:var(--accent)"></i> NamibiaSports</div>
-
-      <nav class="nav-links" aria-label="Site sections">
-        <a href="#" class="nav-item active"><i class="fas fa-home"></i> Home</a>
-        <a href="top-stories.html" class="nav-item"><i class="fas fa-newspaper"></i> Top Stories</a>
-        <a href="news-updates.html" class="nav-item"><i class="fas fa-bolt"></i> News & Updates</a>
-        <a href="#features" class="nav-item"><i class="fas fa-feather"></i> Feature Stories</a>
-        <a href="#tv" class="nav-item"><i class="fas fa-tv"></i> Extra-Time TV</a>
-        <a href="#fixtures" class="nav-item"><i class="fas fa-calendar"></i> Fixtures & Results</a>
-        <a href="#community" class="nav-item"><i class="fas fa-hands-helping"></i> Community & Grassroots</a>
-        <a href="#about" class="nav-item"><i class="fas fa-info-circle"></i> About Us</a>
-        <a href="#advertise" class="nav-item"><i class="fas fa-bullhorn"></i> Advertise / Partner</a>
-      </nav>
-
-      <hr style="border:0;border-top:1px solid var(--border);margin:14px 0">
-
-      <div style="display:flex;gap:8px;flex-direction:column">
-        <button class="theme-btn" id="darkBtn"
-          style="background:transparent;border:1px solid var(--border);color:var(--text)">Dark Mode</button>
-        <button class="theme-btn" id="lightBtn"
-          style="background:transparent;border:1px solid var(--border);color:var(--text)">Light Mode</button>
-      </div>
-
-      <div
-        style="margin-top:12px;padding:12px;background:var(--card);border-radius:10px;border:1px solid var(--border)">
-        <strong>Advertise / Partner</strong>
-        <p class="muted small" style="margin:6px 0">Get your brand in front of Namibian fans</p>
-        <a href="#advertise" class="btn"
-          style="background:transparent;color:var(--accent);padding:8px 12px;border:1px solid rgba(255,255,255,0.03);border-radius:8px">Become
-          a Partner</a>
-      </div>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <section class="main" aria-label="Main content">
-
-      <!-- SEARCH + QUICK ACTIONS -->
-      <header class="main-header" style="padding:0">
-        <div class="search-bar" role="search" aria-label="Search headlines, athletes, fixtures">
-          <i class="fas fa-search" style="color:var(--muted)"></i>
-          <input type="text" placeholder="Search headlines, athletes, fixtures..." aria-label="Search input">
-        </div>
-
-        <div class="header-icons">
-          <a class="icon-btn" href="#fixtures" title="Live Scores"><i class="fas fa-running"></i></a>
-          <a class="icon-btn" href="#tv" title="Watch"><i class="fas fa-play"></i></a>
-        </div>
-      </header>
-
-      <!-- HERO -->
-      <section class="hero-banner" aria-labelledby="heroTitle">
-        <div style="flex:1">
-          <div class="hero-label">Breaking News</div>
-          <h1 id="heroTitle" class="hero-title">Namibia Qualifies for AFCON Quarterfinals — Extra-Time
-            Exclusive
-            Coverage</h1>
-          <p class="hero-excerpt">Extra-Time brings live match coverage, post-match analysis and exclusive
-            interviews as
-            the Brave Warriors make history.</p>
-          <div class="hero-actions">
-            <a href="news-updates.html" class="btn btn-primary">Read Full Story</a>
-            <a href="#tv" class="btn btn-secondary">Watch Highlights</a>
-          </div>
-        </div>
-
-        <div style="width:320px;min-width:220px;">
-          <img src="https://via.placeholder.com/320x180/333333/ff7b00?text=Brave+Warriors" alt="Brave Warriors"
-            style="border-radius:10px;display:block" />
-          <div class="muted small" style="margin-top:8px">Featured athlete: Player of the week — profile below
-          </div>
-        </div>
-      </section>
-
-      <!-- PRIMARY CONTENT: Home Sections -->
-      <div class="content-container">
-
-        <!-- HOME: Top Stories -->
-        <section id="home-top" style="margin-bottom:18px">
-          <h2 class="section-title">Top Stories</h2>
-          <div class="card">🔥 Namibia defeats Zambia 2–1 in thriller</div>
-          <div class="card">🥊 Local boxer wins national title in Windhoek</div>
-          <div class="card">🏉 Welwitschias release squad for qualifiers</div>
-          <div class="card">🏏 Namibia Eagles qualify for T20 World Cup</div>
-          <div class="card">🏃‍♀️ Christine Mboma breaks 200m national record</div>
-        </section>
-
-        <!-- NEWS & UPDATES -->
-        <section id="news" style="margin-bottom:18px">
-          <h2 class="section-title">News & Updates</h2>
-          <div class="breaking-news-grid">
-            <article class="breaking-news-card">
-              <div class="news-tag football">Football</div>
-              <h3>New Coach for Brave Warriors Announced</h3>
-              <p class="muted">Former national team player takes over as head coach ahead of World Cup
-                qualifiers.</p>
-              <div class="muted small" style="margin-top:8px">1 hour ago • <i class="far fa-eye"></i> 2.4k
-              </div>
-              <a href="news-updates.html" class="btn btn-secondary" style="margin-top:10px;display:inline-block">Read
-                More</a>
-            </article>
-            <article class="breaking-news-card">
-              <div class="news-tag athletics">Athletics</div>
-              <h3>Christine Mboma Sets New Record</h3>
-              <p class="muted">Olympic silver medalist breaks national record in 200m at Diamond League.
-              </p>
-              <div class="muted small" style="margin-top:8px">3 hours ago • <i class="far fa-eye"></i>
-                1.8k</div>
-              <a href="news-updates.html" class="btn btn-secondary" style="margin-top:10px;display:inline-block">Read
-                More</a>
-            </article>
-            <article class="breaking-news-card">
-              <div class="news-tag rugby">Rugby</div>
-              <h3>Welwitschias Squad for World Cup Qualifiers</h3>
-              <p class="muted">National rugby team announces 35-man squad for crucial matches.</p>
-              <div class="muted small" style="margin-top:8px">5 hours ago • <i class="far fa-eye"></i>
-                3.1k</div>
-              <a href="news-updates.html" class="btn btn-secondary" style="margin-top:10px;display:inline-block">Read
-                More</a>
-            </article>
-            <article class="breaking-news-card">
-              <div class="news-tag cricket">Cricket</div>
-              <h3>Namibia Eagles Win Regional Tournament</h3>
-              <p class="muted">National cricket team dominates African qualifiers for T20 World Cup.</p>
-              <div class="muted small" style="margin-top:8px">1 day ago • <i class="far fa-eye"></i>
-                4.7k</div>
-              <a href="news-updates.html" class="btn btn-secondary" style="margin-top:10px;display:inline-block">Read
-                More</a>
-            </article>
-          </div>
-        </section>
-
-        <!-- FEATURE STORIES -->
-        <section id="features" style="margin-bottom:18px">
-          <h2 class="section-title">Feature Stories</h2>
-          <div class="stories-grid">
-            <article class="story-card">
-              <img class="story-image" src="https://via.placeholder.com/400x250/333333/ff7b00?text=Athlete"
-                alt="Athlete">
-              <div class="story-content">
-                <div class="story-tag athletics">Athlete Profile</div>
-                <h3 class="story-title">Journey of a Champion: Athlete of the Week</h3>
-                <p class="muted">An in-depth look at the training, sacrifices and triumphs behind
-                  Namibia's rising star.
-                </p>
-                <div class="muted small" style="margin-top:8px">By Sarah Johnson • Dec 15, 2024</div>
-                <a href="top-stories.html" class="btn btn-secondary" style="margin-top:10px;display:inline-block">Read
-                  Full Story</a>
-              </div>
-            </article>
-
-            <article class="story-card">
-              <img class="story-image" src="https://via.placeholder.com/400x250/333333/ff7b00?text=Feature"
-                alt="Feature">
-              <div class="story-content">
-                <div class="story-tag cricket">Feature</div>
-                <h3 class="story-title">Behind the Scenes: Building a National Team</h3>
-                <p class="muted">Exclusive reporting from training camps and federation strategy
-                  sessions.</p>
-                <div class="muted small" style="margin-top:8px">By David Brown • Dec 12, 2024</div>
-                <a href="top-stories.html" class="btn btn-secondary" style="margin-top:10px;display:inline-block">Read
-                  Full Story</a>
-              </div>
-            </article>
-
-            <article class="story-card">
-              <img class="story-image" src="https://via.placeholder.com/400x250/333333/ff7b00?text=Rugby" alt="Rugby">
-              <div class="story-content">
-                <div class="story-tag rugby">Rugby Feature</div>
-                <h3 class="story-title">The Welwitschias: Namibia's Rugby Pride</h3>
-                <p class="muted">Documenting the history and future of Namibia's national rugby team.
-                </p>
-                <div class="muted small" style="margin-top:8px">By Michael Smith • Dec 10, 2024</div>
-                <a href="top-stories.html" class="btn btn-secondary" style="margin-top:10px;display:inline-block">Read
-                  Full Story</a>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <!-- EXTRA-TIME TV -->
-        <section id="tv" style="margin-bottom:18px">
-          <h2 class="section-title">Extra-Time TV</h2>
-          <div class="card">
-            <div class="video-list" style="display:flex;gap:12px;flex-wrap:wrap">
-              <div style="width:320px" class="card">
-                <img class="video-thumb" src="https://via.placeholder.com/320x180/333333/ff7b00?text=AFCON" alt="AFCON">
-                <div style="margin-top:8px"><a class="video-title" href="#">AFCON Highlights: Namibia vs
-                    Ghana</a>
-                  <div class="muted small">45.2K views</div>
-                  <button class="btn btn-primary" style="margin-top:8px;width:100%;"
-                    onclick="playVideo('afcon-highlights')">Watch Now</button>
-                </div>
-              </div>
-
-              <div style="width:320px" class="card">
-                <img class="video-thumb" src="https://via.placeholder.com/320x180/333333/ff7b00?text=Interview"
-                  alt="Interview">
-                <div style="margin-top:8px"><a class="video-title" href="#">Interview with Olympic
-                    Medalist</a>
-                  <div class="muted small">32.7K views</div>
-                  <button class="btn btn-primary" style="margin-top:8px;width:100%;"
-                    onclick="playVideo('olympic-interview')">Watch Now</button>
-                </div>
-              </div>
-
-              <div style="width:320px" class="card">
-                <img class="video-thumb" src="https://via.placeholder.com/320x180/333333/ff7b00?text=Rugby" alt="Rugby">
-                <div style="margin-top:8px"><a class="video-title" href="#">Welwitschias Training Camp
-                    Exclusive</a>
-                  <div class="muted small">28.4K views</div>
-                  <button class="btn btn-primary" style="margin-top:8px;width:100%;"
-                    onclick="playVideo('rugby-training')">Watch Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- FIXTURES & RESULTS -->
-        <section id="fixtures" style="margin-bottom:18px">
-          <h2 class="section-title">Fixtures & Results</h2>
-          <div class="card">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <div>
-                <div style="font-weight:900">Upcoming: Civics FC vs Orlando Pirates</div>
-                <div class="muted small">Tomorrow, 15:00 — Sam Nujoma Stadium</div>
-              </div>
-              <div class="pill">Fixtures • Results • Standings</div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <div>
-                <div style="font-weight:900">Rugby: Namibia vs Zimbabwe</div>
-                <div class="muted small">Saturday, 16:00 — Hage Geingob Stadium</div>
-              </div>
-              <div class="pill">WORLD CUP QUALIFIER</div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <div>
-                <div style="font-weight:900">Cricket: Namibia vs Scotland</div>
-                <div class="muted small">Sunday, 10:00 — Wanderers Cricket Ground</div>
-              </div>
-              <div class="pill">T20 WORLD CUP</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- COMMUNITY & GRASSROOTS -->
-        <section id="community" style="margin-bottom:18px">
-          <h2 class="section-title">Community & Grassroots</h2>
-          <div class="section-grid">
-            <div class="card">
-              <h3>Youth Development Program Launched</h3>
-              <p class="muted">New initiative to identify and nurture young athletic talent across
-                Namibia.</p>
-              <a href="top-stories.html" class="btn btn-secondary" style="margin-top:10px;display:inline-block">Learn
-                More</a>
-            </div>
-            <div class="card">
-              <h3>School Rugby Tournament Finals</h3>
-              <p class="muted">Windhoek High School claims national schools rugby championship in
-                thrilling final.</p>
-              <a href="top-stories.html" class="btn btn-secondary" style="margin-top:10px;display:inline-block">Read
-                Report</a>
-            </div>
-            <div class="card">
-              <h3>Basketball League Expands to 12 Teams</h3>
-              <p class="muted">Local basketball league announces expansion for 2025 season.</p>
-              <a href="top-stories.html" class="btn btn-secondary" style="margin-top:10px;display:inline-block">View
-                Details</a>
-            </div>
-            <div class="card">
-              <h3>Swimming Academy Opens in Swakopmund</h3>
-              <p class="muted">New facility to train next generation of Namibian swimmers.</p>
-              <a href="top-stories.html" class="btn btn-secondary"
-                style="margin-top:10px;display:inline-block">Explore</a>
-            </div>
-          </div>
-        </section>
-
-        <!-- ABOUT (integrated description) -->
-        <section id="about" style="margin-bottom:18px">
-          <h2 class="section-title">About Extra-Time</h2>
-          <div class="card">
-            <p><strong>Extra-Time</strong> is Namibia's premier digital sports publication — the heartbeat
-              of Namibian
-              sports. We deliver fresh, engaging, and insightful sports coverage that celebrates local
-              talent and
-              connects Namibians to the global sporting arena. From football to athletics, rugby to
-              cricket, boxing to
-              grassroots development, Extra-Time captures the passion, stories, and spirit that define
-              Namibian sport.
-            </p>
-
-            <p>Our mission is simple: <strong>inform, inspire, and unite.</strong> Through powerful
-              storytelling,
-              exclusive interviews, real-time match updates, and expert analysis, we bring fans closer to
-              the athletes,
-              clubs, competitions, and communities driving sports forward in Namibia. Whether it's
-              breaking news,
-              in-depth features, match highlights, or behind-the-scenes stories, Extra-Time delivers the
-              content that
-              matters — with accuracy, energy, and flair.</p>
-
-            <h4 style="margin-top:12px">Website Sections</h4>
-            <ul class="muted">
-              <li>Home — Daily sports headlines and top stories</li>
-              <li>Top Stories — Curated most important stories</li>
-              <li>News & Updates — Breaking national & international sports news</li>
-              <li>Feature Stories — In-depth articles & athlete profiles</li>
-              <li>Extra-Time TV — Match highlights & original video</li>
-              <li>Fixtures & Results — Live scores, fixtures and standings</li>
-              <li>Community & Grassroots — Youth and school sports coverage</li>
-              <li>About Us — Mission, team, contact details</li>
-              <li>Advertise / Partner — Sponsorship & brand opportunities</li>
-            </ul>
-
-            <h4 style="margin-top:12px">Sports Coverage</h4>
-            <div class="section-grid">
-              <div>
-                <h5>Football</h5>
-                <ul class="muted">
-                  <li>Premier League</li>
-                  <li>Namibia Premier Football League</li>
-                  <li>CAF Competitions</li>
-                  <li>International Football</li>
-                  <li>Transfers</li>
-                </ul>
-              </div>
-              <div>
-                <h5>Rugby</h5>
-                <ul class="muted">
-                  <li>World Rugby</li>
-                  <li>Welwitschias</li>
-                  <li>Rugby 7s</li>
-                </ul>
-              </div>
-              <div>
-                <h5>Athletics</h5>
-                <ul class="muted">
-                  <li>Track Events</li>
-                  <li>Field Events</li>
-                  <li>Marathons & Road</li>
-                </ul>
-              </div>
-              <div>
-                <h5>Cricket</h5>
-                <ul class="muted">
-                  <li>Namibia Eagles</li>
-                  <li>Domestic Cricket</li>
-                  <li>International Cricket</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ADVERTISE -->
-        <section id="advertise" style="margin-bottom:18px">
-          <h2 class="section-title">Advertise / Partner With Us</h2>
-          <div class="card">
-            <h3>Sponsorship packages tailored for Namibian audiences</h3>
-            <p class="muted">We offer brand visibility across editorial, video, live match coverage and
-              community
-              programmes. Contact our partnerships team to create a tailor-made campaign.</p>
-            <a href="#contact" class="btn btn-primary" style="margin-top:8px;display:inline-block">Contact
-              Partnerships</a>
-          </div>
-        </section>
-
-      </div>
-    </section>
-
-    <!-- RIGHT SIDEBAR -->
-    <aside class="sidebar-right" aria-label="Widgets">
-      <section class="live-scores-widget card-widget">
-        <h3 class="widget-title"><i class="fas fa-running" style="color:var(--accent)"></i> Live Scores</h3>
-
-        <div id="liveMatches">
-          <div class="live-match" style="margin-bottom:10px">
-            <div class="teams" style="align-items:center">
-              <div class="team"><span class="team-name">African Stars</span><strong style="margin-left:8px">2</strong>
-              </div>
-              <div class="team"><strong style="margin-right:8px">1</strong><span class="team-name">Black
-                  Africa</span>
-              </div>
-            </div>
-            <div class="match-status live small" id="liveClock">Live 75'</div>
-          </div>
-
-          <div class="live-match" style="margin-bottom:10px">
-            <div class="teams" style="align-items:center">
-              <div class="team"><span class="team-name">Namibia</span><strong style="margin-left:8px">1</strong>
-              </div>
-              <div class="team"><strong style="margin-right:8px">0</strong><span class="team-name">Ghana</span>
-              </div>
-            </div>
-            <div class="match-status live small">AFCON • 67'</div>
-          </div>
-
-          <div class="upcoming-match"
-            style="padding:8px;background:var(--card);border-radius:8px;border:1px solid var(--border)">
-            <div class="teams" style="margin-bottom:6px">
-              <div class="team"><span class="team-name">Civics FC</span></div>
-              <div class="team"><span class="team-name">Orlando Pirates</span></div>
-            </div>
-            <div class="match-time muted small">Tomorrow, 15:00</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="headlines-widget" style="margin-top:14px">
-        <h3 class="widget-title"><i class="fas fa-newspaper" style="color:var(--accent)"></i> Top Headlines</h3>
-        <ul class="headlines-list">
-          <li class="headline-item"><a class="headline-link" href="top-stories.html">Brave Warriors Captain Announces
-              Retirement</a><span class="headline-time">2 hours ago</span></li>
-          <li class="headline-item"><a class="headline-link" href="top-stories.html">New Sports Complex to Open in
-              Windhoek</a><span class="headline-time">4 hours ago</span></li>
-          <li class="headline-item"><a class="headline-link" href="top-stories.html">Namibia Cricket Team Wins Regional
-              Tournament</a><span class="headline-time">6 hours ago</span></li>
-          <li class="headline-item"><a class="headline-link" href="top-stories.html">Local Basketball League Expands to
-              12
-              Teams</a><span class="headline-time">1 day ago</span></li>
-          <li class="headline-item"><a class="headline-link" href="top-stories.html">Welwitschias Squad Announced for
-              Qualifiers</a><span class="headline-time">1 day ago</span></li>
-        </ul>
-      </section>
-
-      <section class="most-watched-widget" style="margin-top:14px">
-        <h3 class="widget-title"><i class="fas fa-fire" style="color:var(--accent)"></i> Most Watched</h3>
-        <div class="video-list">
-          <div class="video-item">
-            <img class="video-thumb" src="https://via.placeholder.com/80x60/333333/ff7b00?text=AFCON" alt="AFCON">
-            <div style="flex:1"><a class="video-title" href="#">AFCON Highlights: Namibia vs Ghana</a>
-              <div class="muted small">45.2K views</div>
-            </div>
-          </div>
-          <div class="video-item">
-            <img class="video-thumb" src="https://via.placeholder.com/80x60/333333/ff7b00?text=Interview"
-              alt="Interview">
-            <div style="flex:1"><a class="video-title" href="#">Interview with Olympic Medalist</a>
-              <div class="muted small">32.7K views</div>
-            </div>
-          </div>
-          <div class="video-item">
-            <img class="video-thumb" src="https://via.placeholder.com/80x60/333333/ff7b00?text=Rugby" alt="Rugby">
-            <div style="flex:1"><a class="video-title" href="#">Welwitschias Training Camp</a>
-              <div class="muted small">28.4K views</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="social-feed-widget" style="margin-top:14px">
-        <div style="display:flex;align-items:center;justify-content:space-between">
-          <h3 class="widget-title"><i class="fas fa-share-alt" style="color:var(--accent)"></i> Follow Us</h3>
-          <button class="icon-btn" id="refreshFeedBtn" title="Refresh updates"><i class="fas fa-sync-alt"></i></button>
-        </div>
-
-        <div class="social-follow-buttons" style="margin-top:8px">
-          <a class="social-follow-btn twitter-btn" href="https://twitter.com" target="_blank"
-            rel="noopener noreferrer"><i class="fab fa-twitter" style="color:#1da1f2"></i>
-            <span>@NamibiaSports</span></a>
-          <a class="social-follow-btn instagram-btn" href="https://instagram.com" target="_blank"
-            rel="noopener noreferrer"><i class="fab fa-instagram" style="color:#e1306c"></i>
-            <span>@NamibiaSports</span></a>
-          <a class="social-follow-btn facebook-btn" href="https://facebook.com" target="_blank"
-            rel="noopener noreferrer"><i class="fab fa-facebook" style="color:#1877f2"></i>
-            <span>NamibiaSports</span></a>
-        </div>
-
-        <div id="social-feed-container" class="social-feed-container" aria-live="polite" style="margin-top:10px">
-          <p class="small muted">Loading live updates...</p>
-        </div>
-      </section>
-
-      <section class="newsletter-widget" style="margin-top:14px">
-        <h3 class="widget-title"><i class="fas fa-envelope" style="color:var(--accent)"></i> Stay Updated</h3>
-        <p class="newsletter-text muted small">Get the latest sports news delivered to your inbox daily.</p>
-        <form id="newsletterForm" class="newsletter-form" aria-label="Newsletter subscription">
-          <input id="newsletterEmail" type="email" placeholder="Enter your email" class="newsletter-input" required>
-          <button type="submit" class="btn newsletter-btn">Subscribe</button>
-        </form>
-        <div id="newsletterMsg" class="small muted" style="margin-top:8px;display:none"></div>
-      </section>
-    </aside>
-  </div>
-
-  <footer class="site-footer">© Extra-Time / NamibiaSports 2025 — Built with ❤ for Namibian sport</footer>
-
-  <!-- =========================
-       JAVASCRIPT: INTERACTIONS
-       ========================= -->
-  <script>
-    (function () {
-      /* Elements */
-      const menuToggle = document.getElementById('menuToggle');
-      const leftNav = document.getElementById('siteLeftNav');
-      const themeToggle = document.getElementById('themeToggle');
-      const darkBtn = document.getElementById('darkBtn');
-      const lightBtn = document.getElementById('lightBtn');
-      const refreshFeedBtn = document.getElementById('refreshFeedBtn');
-      const socialFeedContainer = document.getElementById('social-feed-container');
-      const newsletterForm = document.getElementById('newsletterForm');
-      const newsletterMsg = document.getElementById('newsletterMsg');
-      const liveClock = document.getElementById('liveClock');
-
-      /* MOBILE MENU */
-      menuToggle?.addEventListener('click', () => {
-        const open = leftNav.classList.toggle('open');
-        menuToggle.setAttribute('aria-expanded', String(open));
-      });
-
-      /* THEME TOGGLING */
-      const applyLight = () => document.documentElement.classList.add('light-mode');
-      const applyDark = () => document.documentElement.classList.remove('light-mode');
-
-      darkBtn?.addEventListener('click', applyDark);
-      lightBtn?.addEventListener('click', applyLight);
-
-      themeToggle?.addEventListener('click', () => {
-        if (document.documentElement.classList.contains('light-mode')) applyDark();
-        else applyLight();
-      });
-
-      // Start dark
-      applyDark();
-
-      /* Social feed simulation */
-      function fetchSocialSimulated() {
-        const now = new Date();
-        const minute = now.getMinutes();
-        return [
-          { text: 'Brave Warriors training session highlights 🔥', source: 'Twitter', time: 'Now', likes: Math.floor(100 + Math.random() * 900) },
-          { text: 'Welwitschias announce traveling squad for qualifiers', source: 'Instagram', time: `${Math.max(1, minute % 60)}m`, likes: Math.floor(20 + Math.random() * 300) },
-          { text: 'Local grassroots tournament this weekend — free entry!', source: 'Facebook', time: `${Math.max(1, (minute + 3) % 60)}m`, likes: Math.floor(5 + Math.random() * 120) }
-        ];
-      }
-      function renderSocialFeed(items) {
-        socialFeedContainer.innerHTML = '';
-        const list = document.createElement('div');
-        list.style.display = 'flex';
-        list.style.flexDirection = 'column';
-        list.style.gap = '8px';
-        items.forEach(item => {
-          const el = document.createElement('div');
-          el.style.padding = '8px';
-          el.style.borderRadius = '8px';
-          el.style.background = 'linear-gradient(90deg, rgba(255,123,0,0.02), transparent)';
-          el.style.border = '1px solid var(--border)';
-          el.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center">
-            <div><div style="font-weight:800">${item.text}</div><div class="muted small">${item.source} • ${item.time}</div></div>
-            <div class="muted small">${item.likes} ❤</div>
-          </div>`;
-          list.appendChild(el);
-        });
-        socialFeedContainer.appendChild(list);
-      }
-      setTimeout(() => renderSocialFeed(fetchSocialSimulated()), 700);
-
-      refreshFeedBtn?.addEventListener('click', function (e) {
-        e.preventDefault();
-        refreshFeedBtn.querySelector('i')?.classList.add('fa-spin');
-        setTimeout(() => {
-          renderSocialFeed(fetchSocialSimulated());
-          refreshFeedBtn.querySelector('i')?.classList.remove('fa-spin');
-        }, 900);
-      });
-
-      /* Newsletter */
-      newsletterForm?.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const email = document.getElementById('newsletterEmail').value.trim();
-        if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-          newsletterMsg.style.display = 'block';
-          newsletterMsg.textContent = 'Please enter a valid email address.';
-          newsletterMsg.style.color = '#ffb4a2';
-          return;
-        }
-        newsletterMsg.style.display = 'block';
-        newsletterMsg.textContent = 'Thanks — subscribing...';
-        newsletterMsg.style.color = 'var(--muted)';
-        setTimeout(() => {
-          newsletterMsg.textContent = 'Subscribed! Check your inbox for confirmation.';
-          newsletterMsg.style.color = 'var(--accent)';
-          newsletterForm.reset();
-        }, 900);
-      });
-
-      /* Live clock small simulation */
-      let minuteCounter = 75;
-      setInterval(() => {
-        minuteCounter = Math.min(95, minuteCounter + Math.floor(Math.random() * 2));
-        if (liveClock) liveClock.textContent = 'Live ' + minuteCounter + "'";
-      }, 7000);
-
-      /* SPORTS NAV: mobile behavior - toggle dropdown on tap */
-      document.querySelectorAll('.sports-inline-list .dropdown > a').forEach(link => {
-        link.addEventListener('click', function (e) {
-          if (window.innerWidth < 960) {
-            e.preventDefault();
-            const parent = this.parentElement;
-            parent.classList.toggle('open');
-            const expanded = parent.classList.contains('open');
-            this.setAttribute('aria-expanded', String(expanded));
-            const menu = parent.querySelector('.mega-menu');
-            if (menu) menu.style.display = expanded ? 'flex' : 'none';
-          }
-        });
-      });
-
-      /* On resize hide any open inline menus if switching to mobile */
-      window.addEventListener('resize', function () {
-        if (window.innerWidth < 960) {
-          document.querySelectorAll('.sports-inline-list .mega-menu').forEach(m => { m.style.display = 'none'; });
-        } else {
-          document.querySelectorAll('.sports-inline-list .dropdown.open').forEach(d => d.classList.remove('open'));
-        }
-        if (window.innerWidth > 820 && leftNav.classList.contains('open')) {
-          leftNav.classList.remove('open');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      /* Keyboard shortcut 't' toggles theme */
-      window.addEventListener('keydown', function (e) {
-        if (e.key === 't' || e.key === 'T') themeToggle?.click();
-      });
-
-      /* Focus management: close menus when clicking outside */
-      document.addEventListener('click', function (e) {
-        const isInsideSports = e.target.closest('.sports-inline-nav');
-        if (!isInsideSports) {
-          document.querySelectorAll('.sports-inline-list .mega-menu').forEach(m => { m.style.display = 'none'; });
-        }
-      });
-
-      /* Accessibility: enable menu show on focus */
-      document.querySelectorAll('.sports-inline-list li > a').forEach(a => {
-        a.addEventListener('focus', () => {
-          const menu = a.parentElement.querySelector('.mega-menu');
-          if (menu) menu.style.display = 'flex';
-        });
-        a.addEventListener('blur', () => {
-          const menu = a.parentElement.querySelector('.mega-menu');
-          if (menu) setTimeout(() => menu.style.display = '', 150);
-        });
-      });
-
-      /* Video play function */
-      window.playVideo = function (videoId) {
-        alert(`In a real application, this would play the video: ${videoId}`);
-        // In a real app, this would open a video player modal or navigate to a video page
-      };
-
-      /* Smooth scrolling for anchor links within page */
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          const href = this.getAttribute('href');
-          // Only handle anchor links that start with # and aren't empty
-          if (href === '#') return;
-
-          // If it's an anchor link to a section on the same page
-          if (href.startsWith('#') && document.querySelector(href)) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-              target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
+    <!-- JavaScript Fixes -->
+    <script>
+        // ============== NEWS LOADING ==============
+        async function loadNews() {
+            try {
+                console.log('Loading news...');
+                const response = await fetch('/news');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const news = await response.json();
+                console.log('News loaded:', news);
+                
+                const newsContainer = document.getElementById('news-content');
+                const newsSection = document.getElementById('news');
+                
+                if (news.length > 0) {
+                    newsContainer.innerHTML = news.map(item => `
+                        <div class="story-card hover-lift" style="margin: 15px 0; padding: 20px; background: var(--card); border-radius: 8px;">
+                            ${item.image ? `<img src="/uploads/${item.image}" alt="${item.title}" style="width: 100%; max-width: 300px; border-radius: 4px; margin-bottom: 15px;">` : ''}
+                            <h3 style="color: var(--accent); margin-bottom: 10px;">${item.title}</h3>
+                            <p style="color: var(--text); margin-bottom: 10px;">${item.content}</p>
+                            <div style="display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.9rem;">
+                                <span>${item.category || 'General'}</span>
+                                <span>${new Date(item.createdAt).toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    if (newsSection) {
+                        newsSection.style.display = 'block';
+                    }
+                } else {
+                    newsContainer.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 40px;">No news articles yet. Check back soon!</p>';
+                    if (newsSection) {
+                        newsSection.style.display = 'block';
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading news:', error);
+                const newsContainer = document.getElementById('news-content');
+                if (newsContainer) {
+                    newsContainer.innerHTML = `
+                        <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            <p>Unable to load news at the moment.</p>
+                            <p>Please try again later.</p>
+                        </div>
+                    `;
+                }
             }
-          }
+        }
+
+        // ============== PAGE MANAGEMENT ==============
+        const pages = {
+            'home': 'home-page',
+            'football': 'football-page',
+            'rugby': 'rugby-page',
+            'athletics': 'athletics-page',
+            'boxing': 'boxing-page',
+            'mma': 'mma-page',
+            'golf': 'golf-page',
+            'hockey': 'hockey-page',
+            'basketball': 'basketball-page',
+            'netball': 'netball-page',
+            'cycling': 'cycling-page',
+            'cricket': 'cricket-page',
+            'futsal': 'futsal-page',
+            'snooker': 'snooker-page',
+            'volleyball': 'volleyball-page',
+            'about': 'about-page',
+            'login': 'login-page',
+            'signup': 'signup-page',
+            'profile': 'profile-page'
+        };
+
+        function showPage(pageId) {
+            // Hide all pages
+            Object.values(pages).forEach(page => {
+                const element = document.getElementById(page);
+                if (element) {
+                    element.classList.remove('active-page', 'fade-in');
+                    element.style.display = 'none';
+                }
+            });
+
+            // Show selected page
+            const pageElement = document.getElementById(pages[pageId]);
+            if (pageElement) {
+                pageElement.style.display = 'block';
+                setTimeout(() => {
+                    pageElement.classList.add('active-page', 'fade-in');
+                }, 10);
+            }
+
+            // Update navigation
+            document.querySelectorAll('.sports-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Update sports navigation if it's a sports page
+            if (pages[pageId].includes('-page')) {
+                const sportLinks = document.querySelectorAll('.sports-link');
+                sportLinks.forEach(link => {
+                    if (link.textContent.toLowerCase().includes(pageId)) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Close menus if open
+            if (document.getElementById('sideMenu')?.classList.contains('active')) {
+                toggleMenu();
+            }
+
+            // Load page-specific content
+            if (pageId === 'home') {
+                loadNews();
+            }
+        }
+
+        // ============== INITIALIZATION ==============
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home page by default
+            showPage('home');
+            
+            // Load news on home page
+            loadNews();
+            
+            // Initialize all event listeners
+            initializeEventListeners();
         });
-      });
 
-      console.debug('Extra-Time hybrid homepage initialized.');
-    })();
-  </script>
+        function initializeEventListeners() {
+            // Sports navigation
+            document.querySelectorAll('.sports-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sport = this.textContent.trim().toLowerCase();
+                    showPage(sport);
+                });
+            });
+
+            // Logo home button
+            document.querySelector('.logo-circle')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                showPage('home');
+            });
+
+            // Side menu links
+            document.querySelectorAll('.side-menu button, .side-menu a').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    const text = this.textContent.trim().toLowerCase();
+                    if (text.includes('home')) showPage('home');
+                    else if (text.includes('tv')) showPage('home');
+                    else if (text.includes('fixtures')) showPage('home');
+                    else if (text.includes('community')) showPage('home');
+                    else if (text.includes('about')) showPage('about');
+                    else if (text.includes('advertise')) showPage('home');
+                    else if (text.includes('profile')) showPage('profile');
+                    else if (text.includes('login')) showPage('login');
+                    else if (text.includes('sign up')) showPage('signup');
+                });
+            });
+
+            // Footer links
+            document.querySelectorAll('.footer-links button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const text = this.textContent.trim().toLowerCase();
+                    if (text.includes('football')) showPage('football');
+                    else if (text.includes('rugby')) showPage('rugby');
+                    else if (text.includes('athletics')) showPage('athletics');
+                    else if (text.includes('boxing')) showPage('boxing');
+                    else if (text.includes('mma')) showPage('mma');
+                    else if (text.includes('golf')) showPage('golf');
+                    else if (text.includes('hockey')) showPage('hockey');
+                    else if (text.includes('basketball')) showPage('basketball');
+                    else if (text.includes('netball')) showPage('netball');
+                    else if (text.includes('cycling')) showPage('cycling');
+                    else if (text.includes('cricket')) showPage('cricket');
+                    else if (text.includes('futsal')) showPage('futsal');
+                    else if (text.includes('snooker')) showPage('snooker');
+                    else if (text.includes('volleyball')) showPage('volleyball');
+                    else if (text.includes('about')) showPage('about');
+                });
+            });
+
+            // Headlines click
+            document.querySelectorAll('.headline-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const text = this.textContent.trim().toLowerCase();
+                    if (text.includes('football') || text.includes('warriors') || text.includes('afcon')) showPage('football');
+                    else if (text.includes('rugby') || text.includes('welwitschias')) showPage('rugby');
+                    else if (text.includes('cricket') || text.includes('t20')) showPage('cricket');
+                    else if (text.includes('basketball')) showPage('basketball');
+                    else if (text.includes('athletics') || text.includes('mboma')) showPage('athletics');
+                    else if (text.includes('boxing') || text.includes('simon')) showPage('boxing');
+                });
+            });
+        }
+
+        // ============== MENU FUNCTIONS ==============
+        function toggleMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('overlay');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (sideMenu.classList.contains('active')) {
+                sideMenu.classList.remove('active');
+                overlay.style.display = 'none';
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                sideMenu.classList.add('active');
+                overlay.style.display = 'block';
+                hamburger.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function toggleUserMenu() {
+            const dropdown = document.getElementById('userDropdown');
+            if (dropdown.classList.contains('active')) {
+                dropdown.classList.remove('active');
+            } else {
+                dropdown.classList.add('active');
+            }
+        }
+
+        // ============== THEME FUNCTIONS ==============
+        function setMode(mode) {
+            const body = document.body;
+            if (mode === 'light') {
+                body.classList.add('light-mode');
+                localStorage.setItem('et_theme', 'light');
+            } else {
+                body.classList.remove('light-mode');
+                localStorage.setItem('et_theme', 'dark');
+            }
+        }
+
+        function setAccent(accent) {
+            const body = document.body;
+            body.classList.remove('accent-orange', 'accent-blue', 'accent-purple', 'accent-green', 'accent-pink', 'accent-yellow', 'accent-red');
+            body.classList.add(accent);
+            localStorage.setItem('et_accent', accent);
+        }
+
+        // Load saved preferences
+        window.addEventListener('load', function() {
+            const savedTheme = localStorage.getItem('et_theme');
+            const savedAccent = localStorage.getItem('et_accent');
+            
+            if (savedTheme === 'light') {
+                setMode('light');
+            }
+            
+            if (savedAccent) {
+                setAccent(savedAccent);
+            }
+        });
+
+        // ============== SEARCH FUNCTIONALITY ==============
+        function toggleSearch() {
+            const searchOverlay = document.querySelector('.search-overlay');
+            const searchInput = document.querySelector('.search-input');
+            
+            if (searchOverlay.style.display === 'block') {
+                searchOverlay.style.display = 'none';
+                document.body.style.overflow = '';
+            } else {
+                searchOverlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                searchInput.focus();
+            }
+        }
+
+        // ============== NEWSLETTER ==============
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            
+            if (email) {
+                alert('Thank you for subscribing to our newsletter!');
+                event.target.reset();
+            }
+        }
+
+        // ============== AUTH FUNCTIONS ==============
+        function handleLogin(event) {
+            event.preventDefault();
+            alert('Login functionality will be available soon!');
+            // In production, this would call your backend API
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            alert('Signup functionality will be available soon!');
+            // In production, this would call your backend API
+        }
+    </script>
+
 </body>
-
 </html>
